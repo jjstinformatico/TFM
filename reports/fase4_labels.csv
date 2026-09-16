@@ -1,0 +1,8 @@
+﻿scenario_id,label,description,expected_processes,expected_artifacts
+S1,suspicious_simulated,Ejecución de binario desde ruta temporal,svchost-test.exe,%TEMP%\TFMTest\svchost-test.exe
+S2,suspicious_simulated,PowerShell con comando codificado benigno,powershell.exe,EncodedCommand
+S3,suspicious_simulated,Modificación de clave Run de usuario,reg.exe,HKCU\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest
+S4,suspicious_simulated,Creación de tarea programada benigna,schtasks.exe,TFMTestTask
+S5,suspicious_simulated,Creación de servicio de prueba,sc.exe,TFMTestService
+S6,suspicious_simulated,Creación de fichero en carpeta Startup,powershell.exe,Startup\tfm_startup_test.bat
+S7,suspicious_simulated,Conexión de red desde PowerShell,powershell.exe,www.example.com:80

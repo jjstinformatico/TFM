@@ -1,0 +1,53 @@
+{
+  "total_events": 1605,
+  "events_by_phase": {
+    "fase4_suspicious_simulated": 978,
+    "fase3_normal": 627
+  },
+  "events_by_provider": {
+    "Microsoft-Windows-Sysmon": 905,
+    "Microsoft-Windows-PowerShell": 700
+  },
+  "events_by_event_id": {
+    "4104": 671,
+    "11": 294,
+    "3": 230,
+    "1": 141,
+    "5": 138,
+    "22": 79,
+    "7": 15,
+    "40961": 7,
+    "53504": 7,
+    "40962": 7,
+    "12": 6,
+    "4103": 4,
+    "4100": 4,
+    "13": 2
+  },
+  "events_by_label": {
+    "background": 919,
+    "normal": 627,
+    "suspicious_simulated": 59
+  },
+  "events_by_scenario": {
+    "": 847,
+    "N5": 250,
+    "S7": 236,
+    "S2": 125,
+    "N4": 35,
+    "N3": 28,
+    "N1": 22,
+    "S3": 21,
+    "S5": 18,
+    "N2": 7,
+    "S4": 7,
+    "S1": 6,
+    "S6": 3
+  },
+  "source_files": {
+    "fase4_sysmon_sospechosa.evtx": 750,
+    "fase3_powershell_normal.evtx": 472,
+    "fase4_powershell_sospechosa.evtx": 228,
+    "fase3_sysmon_normal.evtx": 155
+  }
+}

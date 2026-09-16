@@ -1,0 +1,51 @@
+Get-FileHash C:\TFM_Triage\raw\fase3_sysmon_normal.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase3_sysmon_normal_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase3_powershell_normal.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase3_powershell_normal_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase3_security_normal.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase3_security_normal_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase3_system_normal.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase3_system_normal_rev.evtx.txt
+
+
+Get-FileHash C:\TFM_Triage\raw\fase4_sysmon_sospechosa.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase4_sysmon_sospechosa_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase4_powershell_sospechosa.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase4_powershell_sospechosa_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase4_security_sospechosa.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase4_security_sospechosa_rev.evtx.txt
+
+Get-FileHash C:\TFM_Triage\raw\fase4_system_sospechosa.evtx -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hash_fase4_system_sospechosa_rev.evtx.txt
+
+
+Get-FileHash C:\TFM_Triage\src\*.py -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_scripts_rev.txt
+
+Get-FileHash C:\TFM_Triage\processed\combined\*.csv -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_processed_csv_rev.txt
+Get-FileHash C:\TFM_Triage\processed\combined\*.json -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_processed_json_rev.txt
+
+
+Get-FileHash C:\TFM_Triage\src\build_process_features.py,C:\TFM_Triage\src\baseline_heuristic.py,C:\TFM_Triage\src\check_baseline_results.py -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase6_scripts_rev.txt
+
+Get-FileHash C:\TFM_Triage\processed\combined\process_features.csv,C:\TFM_Triage\processed\combined\process_features_summary.json -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase6_processed_rev.txt
+
+Get-FileHash C:\TFM_Triage\reports\ranking_baseline.csv,C:\TFM_Triage\reports\baseline_evaluation.json,C:\TFM_Triage\reports\baseline_summary_fase6.txt,C:\TFM_Triage\reports\quick_baseline_check_fase6.txt -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase6_reports_rev.txt
+
+
+Get-FileHash C:\TFM_Triage\src\ml_isolation_forest.py,C:\TFM_Triage\src\compare_baseline_ml.py,C:\TFM_Triage\src\check_ml_results.py -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase7_scripts_rev.txt
+
+Get-FileHash C:\TFM_Triage\reports\ranking_ml.csv,C:\TFM_Triage\reports\ml_evaluation.json,C:\TFM_Triage\reports\comparison_baseline_ml.csv,C:\TFM_Triage\reports\comparison_baseline_ml.json,C:\TFM_Triage\reports\quick_ml_check_fase7.txt -Algorithm SHA256 | Format-List |
+Out-File C:\TFM_Triage\hashes\hashes_fase7_reports_rev.txt
+

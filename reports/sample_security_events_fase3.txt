@@ -1,0 +1,1798 @@
+﻿
+
+TimeCreated  : 30/06/2026 17:55:32
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:55:32
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:52:17
+Id           : 4798
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se enumeró la pertenencia a grupos locales de un usuario.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de cuenta:		jjstestal
+               	Dominio de cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               
+               Usuario:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de cuenta:		jjstestal
+               	Dominio de cuenta:		labwin
+               
+               Información de proceso:
+               	Id. de proceso:		0x23dc
+               	Nombre de proceso:		C:\Windows\System32\PickerHost.exe
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:50:20
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:49:45
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:49:45
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:46:15
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:46:15
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:46:15
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:46:15
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:46:14
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:46:14
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-21-116498436-4260922757-2981525732-1001
+               	Nombre de la cuenta:		jjstestal
+               	Dominio de la cuenta:		labwin
+               	Id. de inicio de sesión:		0x59F26D
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 5379
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Las credenciales del Administrador de credenciales se leyeron.
+               
+               Asunto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de la cuenta:		LABWIN$
+               	Dominio de la cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               	Operación de lectura:		Enumerar las credenciales
+               
+               Este evento se produce cuando un usuario realiza una operación de lectura en las 
+               credenciales almacenadas en el Administrador de credenciales.
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:46:12
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:39:14
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:39:14
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:38:37
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:38:37
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:32:42
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:32:42
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:23:21
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:23:21
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:17:25
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:17:25
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:12:48
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:12:48
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:12:32
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+TimeCreated  : 30/06/2026 17:12:32
+Id           : 4624
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se inició sesión correctamente en una cuenta.
+               
+               Firmante:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		LABWIN$
+               	Dominio de cuenta:		WORKGROUP
+               	Id. de inicio de sesión:		0x3E7
+               
+               Información de inicio de sesión:
+               	Tipo de inicio de sesión:		5
+               	Modo de administrador restringido:	-
+               	Credential Guard remota:	-
+               	Cuenta virtual:		No
+               	Token elevado:		Sí
+               
+               Nivel de suplantación:		Suplantación
+               
+               Nuevo inicio de sesión:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               	Inicio de sesión vinculado:		0x0
+               	Nombre de cuenta de red:	-
+               	Dominio de cuenta de red:	-
+               	GUID de inicio de sesión:		{00000000-0000-0000-0000-000000000000}
+               
+               Información de proceso:
+               	Id. de proceso:		0x39c
+               	Nombre de proceso:		C:\Windows\System32\services.exe
+               
+               Información de red:
+               	Nombre de estación de trabajo:	-
+               	Dirección de red de origen:	-
+               	Puerto de origen:		-
+               
+               Información de autenticación detallada:
+               	Proceso de inicio de sesión:		Advapi  
+               	Paquete de autenticación:	Negotiate
+               	Servicios transitados:	-
+               	Nombre de paquete (solo NTLM):	-
+               	Longitud de clave:		0
+               
+               Este evento se genera cuando se crea una sesión de inicio. Lo genera el equipo al que 
+               se tuvo acceso.
+               
+               Los campos de firmante indican la cuenta del sistema local que solicitó el inicio de 
+               sesión. Suele ser un servicio como el servicio de servidor o un proceso local como 
+               Winlogon.exe o Services.exe.
+               
+               El campo Tipo de inicio de sesión indica la clase de inicio de sesión que se realizó. 
+               Los tipos más comunes son 2 (interactivo) y 3 (red).
+               
+               Los campos Nuevo inicio de sesión indican la cuenta para la que se creó el nuevo 
+               inicio de sesión, es decir, aquella en la que se inició la sesión.
+               
+               Los campos de red indican dónde se originó una solicitud de inicio de sesión remota. 
+               Nombre de estación de trabajo no está siempre disponible y se puede dejar en blanco 
+               en algunos casos.
+               
+               El campo de nivel de suplantación indica en qué medida un proceso en la sesión de 
+               inicio de sesión puede suplantar.
+               
+               Los campos de información de autenticación proporcionan información detallada sobre 
+               esta solicitud de inicio de sesión específica.
+               	- GUID de inicio de sesión es un identificador único que se puede usar para 
+               correlacionar este evento con un evento KDC.
+               	- Servicios transitados indica los servicios intermedios que participaron en esta 
+               solicitud de inicio de sesión.
+               	- Nombre de paquete indica el subprotocolo que se usó entre los protocolos NTLM.
+               	- Longitud de clave indica la longitud de la clave de sesión generada. Será 0 si no 
+               se solicitó una clave de sesión.
+
+TimeCreated  : 30/06/2026 17:12:31
+Id           : 4672
+ProviderName : Microsoft-Windows-Security-Auditing
+MachineName  : labwin
+Message      : Se asignaron privilegios especiales a un nuevo inicio de sesión.
+               
+               Sujeto:
+               	Id. de seguridad:		S-1-5-18
+               	Nombre de cuenta:		SYSTEM
+               	Dominio de cuenta:		NT AUTHORITY
+               	Id. de inicio de sesión:		0x3E7
+               
+               Privilegios:		SeAssignPrimaryTokenPrivilege
+               			SeTcbPrivilege
+               			SeSecurityPrivilege
+               			SeTakeOwnershipPrivilege
+               			SeLoadDriverPrivilege
+               			SeBackupPrivilege
+               			SeRestorePrivilege
+               			SeDebugPrivilege
+               			SeAuditPrivilege
+               			SeSystemEnvironmentPrivilege
+               			SeImpersonatePrivilege
+               			SeDelegateSessionUserImpersonatePrivilege
+
+
+

@@ -1,0 +1,89 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260630125451
+Nombre de usuario: labwin\jjstestal
+Usuario RunAs: labwin\jjstestal
+Nombre de la configuración: 
+Máquina: LABWIN (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 11656
+PSVersion: 5.1.26100.8115
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8115
+BuildVersion: 10.0.26100.8115
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\TFM_Triage\reports\transcript_laboratorio_fase0.txt
+PS C:\Users\jjstestal> Write-Output "FASE 0 - Preparación inicial del laboratorio TFM"
+FASE 0 - Preparación inicial del laboratorio TFM
+PS C:\Users\jjstestal> Write-Output "Fecha y hora de inicio:"
+Fecha y hora de inicio:
+PS C:\Users\jjstestal> Get-Date
+
+martes, 30 de junio de 2026 12:55:11
+
+
+PS C:\Users\jjstestal> Write-Output "Usuario actual:"
+Usuario actual:
+PS C:\Users\jjstestal> whoami
+labwin\jjstestal
+PS C:\Users\jjstestal> Write-Output "Nombre del equipo:"
+Nombre del equipo:
+PS C:\Users\jjstestal> hostname
+labwin
+PS C:\Users\jjstestal> Write-Output "Comprobación de carpeta principal:"
+Comprobación de carpeta principal:
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage
+True
+PS C:\Users\jjstestal> Write-Output "Estructura de carpetas del laboratorio:"
+Estructura de carpetas del laboratorio:
+PS C:\Users\jjstestal> Get-ChildItem C:\TFM_Triage | Select-Object Name, FullName, CreationTime
+
+Name        FullName                  CreationTime
+----        --------                  ------------
+docs        C:\TFM_Triage\docs        30/06/2026 12:10:42
+hashes      C:\TFM_Triage\hashes      30/06/2026 12:10:42
+processed   C:\TFM_Triage\processed   30/06/2026 12:10:42
+raw         C:\TFM_Triage\raw         30/06/2026 12:10:42
+reports     C:\TFM_Triage\reports     30/06/2026 12:10:42
+screenshots C:\TFM_Triage\screenshots 30/06/2026 12:10:42
+scripts     C:\TFM_Triage\scripts     30/06/2026 12:10:42
+tools       C:\TFM_Triage\tools       30/06/2026 12:10:43
+
+
+PS C:\Users\jjstestal> Write-Output "Ubicación del diario de laboratorio:"
+Ubicación del diario de laboratorio:
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage\docs\diario_laboratorio.md
+True
+PS C:\Users\jjstestal> Write-Output "Contenido inicial de la carpeta docs:"
+Contenido inicial de la carpeta docs:
+PS C:\Users\jjstestal> Get-ChildItem C:\TFM_Triage\docs
+
+
+    Directorio: C:\TFM_Triage\docs
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        30/06/2026     12:51           4510 diario_laboratorio.md
+-a----        30/06/2026     12:49           2362 ficha_maquina_virtual.md
+
+
+PS C:\Users\jjstestal> Write-Output "Contenido inicial de la carpeta reports:"
+Contenido inicial de la carpeta reports:
+PS C:\Users\jjstestal> Get-ChildItem C:\TFM_Triage\reports
+
+
+    Directorio: C:\TFM_Triage\reports
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        30/06/2026     12:54            758 transcript_laboratorio_fase0.txt
+
+
+PS C:\Users\jjstestal> Write-Output "Fin de comprobaciones de Fase 0"
+Fin de comprobaciones de Fase 0

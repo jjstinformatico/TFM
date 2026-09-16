@@ -1,0 +1,6 @@
+﻿scenario_id,scenario_type,description,start_time,end_time,notes
+N1,normal,Actividad básica de usuario: notepad calc explorer,2026-06-30 17:53:35.021,2026-06-30 17:53:50.273,Procesos legítimos habituales de usuario
+N2,normal,Gestión legítima de ficheros en carpeta de laboratorio,2026-06-30 17:54:26.107,2026-06-30 17:54:26.289,Creación copia modificación y borrado de ficheros normales
+N3,normal,Administración legítima de Windows con cmd y PowerShell,2026-06-30 17:54:48.782,2026-06-30 17:54:49.786,Consultas administrativas sin cambios persistentes
+N4,normal,Uso legítimo de PowerShell sin comandos codificados,2026-06-30 17:55:12.655,2026-06-30 17:55:15.998,Comandos de consulta sin persistencia ni ofuscación
+N5,normal,Conectividad de red legítima mediante DNS y HTTPS,2026-06-30 17:55:29.873,2026-06-30 17:55:33.120,Pruebas de conectividad documentadas y no maliciosas

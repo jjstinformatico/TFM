@@ -1,0 +1,233 @@
+{
+  "baseline_total_processes": 176,
+  "ml_total_processes": 176,
+  "baseline_metrics": {
+    "precision_at_5": 0.4,
+    "recall_at_5": 0.14285714285714285,
+    "precision_at_10": 0.5,
+    "recall_at_10": 0.35714285714285715,
+    "precision_at_15": 0.5333333333333333,
+    "recall_at_15": 0.5714285714285714,
+    "precision_at_20": 0.6,
+    "recall_at_20": 0.8571428571428571
+  },
+  "ml_metrics": {
+    "precision_at_5": 0.2,
+    "recall_at_5": 0.07142857142857142,
+    "precision_at_10": 0.1,
+    "recall_at_10": 0.07142857142857142,
+    "precision_at_15": 0.13333333333333333,
+    "recall_at_15": 0.14285714285714285,
+    "precision_at_20": 0.1,
+    "recall_at_20": 0.14285714285714285
+  },
+  "top10_overlap_count": 2,
+  "top10_overlap_process_keys": [
+    "guid:{55857b6a-c19b-6a44-2101-000000000c00}",
+    "guid:{55857b6a-c2c5-6a44-4201-000000000c00}"
+  ],
+  "baseline_top10_labels": {
+    "suspicious_simulated": 5,
+    "normal": 4,
+    "background": 1
+  },
+  "ml_top10_labels": {
+    "background": 8,
+    "normal": 1,
+    "suspicious_simulated": 1
+  },
+  "baseline_top10": [
+    {
+      "rank": "1",
+      "baseline_score": "109",
+      "risk_level": "alto",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S1;S2;S3;S4;S5;S6;S7",
+      "process_name": "powershell.exe",
+      "image": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +25 uso de PowerShell con EncodedCommand; +18 artefacto en carpeta Startup; +10 conexión de red asociada al proceso; +8 destinos de red externos; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense; +5 múltiples creaciones de fichero"
+    },
+    {
+      "rank": "2",
+      "baseline_score": "91",
+      "risk_level": "alto",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S2",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +25 uso de PowerShell con EncodedCommand; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": "3",
+      "baseline_score": "81",
+      "risk_level": "alto",
+      "label": "background",
+      "scenario_ids": "S2;S3",
+      "process_name": "firefox.exe",
+      "image": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +10 conexión de red asociada al proceso; +8 destinos de red externos; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +5 múltiples creaciones de fichero"
+    },
+    {
+      "rank": "4",
+      "baseline_score": "66",
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": "5",
+      "baseline_score": "61",
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": "6",
+      "baseline_score": "61",
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": "7",
+      "baseline_score": "61",
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": "8",
+      "baseline_score": "51",
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S3",
+      "process_name": "reg.exe",
+      "image": "C:\\Windows\\System32\\reg.exe",
+      "main_reasons": "+20 modificación de clave Run asociada a persistencia; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +8 eventos de registro asociados al proceso"
+    },
+    {
+      "rank": "9",
+      "baseline_score": "51",
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S3",
+      "process_name": "reg.exe",
+      "image": "C:\\Windows\\System32\\reg.exe",
+      "main_reasons": "+20 modificación de clave Run asociada a persistencia; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +8 eventos de registro asociados al proceso"
+    },
+    {
+      "rank": "10",
+      "baseline_score": "51",
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S1",
+      "process_name": "svchost-test.exe",
+      "image": "C:\\Users\\JJSTES~1\\AppData\\Local\\Temp\\TFMTest\\svchost-test.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +10 ejecución o artefacto asociado a perfil de usuario; +6 relación padre-hijo poco frecuente en el dataset; +10 varias palabras clave de interés forense"
+    }
+  ],
+  "ml_top10": [
+    {
+      "ml_rank": "1",
+      "ml_anomaly_score": "0.21535582476325",
+      "label": "normal",
+      "scenario_ids": "N1;N2;N3;N4;N5",
+      "process_name": "powershell.exe",
+      "image": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "event_count": "40"
+    },
+    {
+      "ml_rank": "2",
+      "ml_anomaly_score": "0.20765607746283732",
+      "label": "background",
+      "scenario_ids": "S2;S3",
+      "process_name": "firefox.exe",
+      "image": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+      "event_count": "90"
+    },
+    {
+      "ml_rank": "3",
+      "ml_anomaly_score": "0.17443422836238187",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S1;S2;S3;S4;S5;S6;S7",
+      "process_name": "powershell.exe",
+      "image": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "event_count": "36"
+    },
+    {
+      "ml_rank": "4",
+      "ml_anomaly_score": "0.13522262106275362",
+      "label": "background",
+      "scenario_ids": "S2",
+      "process_name": "svchost.exe",
+      "image": "C:\\Windows\\System32\\svchost.exe",
+      "event_count": "16"
+    },
+    {
+      "ml_rank": "5",
+      "ml_anomaly_score": "0.12919510479403074",
+      "label": "background",
+      "scenario_ids": "",
+      "process_name": "msedgewebview2.exe",
+      "image": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\149.0.4022.98\\msedgewebview2.exe",
+      "event_count": "91"
+    },
+    {
+      "ml_rank": "6",
+      "ml_anomaly_score": "0.10804184891949431",
+      "label": "background",
+      "scenario_ids": "",
+      "process_name": "systemsettings.exe",
+      "image": "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe",
+      "event_count": "13"
+    },
+    {
+      "ml_rank": "7",
+      "ml_anomaly_score": "0.1032084094632627",
+      "label": "background",
+      "scenario_ids": "S2",
+      "process_name": "taskhostw.exe",
+      "image": "C:\\Windows\\System32\\taskhostw.exe",
+      "event_count": "25"
+    },
+    {
+      "ml_rank": "8",
+      "ml_anomaly_score": "0.09686451033247534",
+      "label": "background",
+      "scenario_ids": "",
+      "process_name": "svchost.exe",
+      "image": "C:\\Windows\\System32\\svchost.exe",
+      "event_count": "8"
+    },
+    {
+      "ml_rank": "9",
+      "ml_anomaly_score": "0.09372356224722378",
+      "label": "background",
+      "scenario_ids": "S2;S3;S5;S7",
+      "process_name": "svchost.exe",
+      "image": "C:\\Windows\\System32\\svchost.exe",
+      "event_count": "49"
+    },
+    {
+      "ml_rank": "10",
+      "ml_anomaly_score": "0.08891314812801254",
+      "label": "background",
+      "scenario_ids": "",
+      "process_name": "svchost.exe",
+      "image": "C:\\WINDOWS\\System32\\svchost.exe",
+      "event_count": "8"
+    }
+  ]
+}

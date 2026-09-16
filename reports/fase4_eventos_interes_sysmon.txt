@@ -1,0 +1,752 @@
+﻿
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 5
+RecordId     : 20689
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:55.455
+               ProcessGuid: {55857b6a-c44b-6a44-9001-000000000c00}
+               ProcessId: 12848
+               Image: C:\Windows\System32\sc.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 1
+RecordId     : 20688
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:55.450
+               ProcessGuid: {55857b6a-c44b-6a44-9001-000000000c00}
+               ProcessId: 12848
+               Image: C:\Windows\System32\sc.exe
+               FileVersion: 10.0.26100.4484 (WinBuild.160101.0800)
+               Description: Service Control Manager Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sc.exe
+               CommandLine: "C:\WINDOWS\system32\sc.exe" delete TFMTestService
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=A452BFCB6000D03942DDFADDCDA5A7EB121447ED99B1BA090446B4A989F1F7AE,IMPHASH
+               =42DADBD60BBC453DD1773FDC089E19B7
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:53
+Id           : 5
+RecordId     : 20687
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.419
+               ProcessGuid: {55857b6a-c449-6a44-8f01-000000000c00}
+               ProcessId: 6544
+               Image: C:\Windows\System32\sc.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:53
+Id           : 1
+RecordId     : 20686
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.414
+               ProcessGuid: {55857b6a-c449-6a44-8f01-000000000c00}
+               ProcessId: 6544
+               Image: C:\Windows\System32\sc.exe
+               FileVersion: 10.0.26100.4484 (WinBuild.160101.0800)
+               Description: Service Control Manager Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sc.exe
+               CommandLine: "C:\WINDOWS\system32\sc.exe" query TFMTestService
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=A452BFCB6000D03942DDFADDCDA5A7EB121447ED99B1BA090446B4A989F1F7AE,IMPHASH
+               =42DADBD60BBC453DD1773FDC089E19B7
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:53
+Id           : 5
+RecordId     : 20684
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.397
+               ProcessGuid: {55857b6a-c449-6a44-8e01-000000000c00}
+               ProcessId: 13548
+               Image: C:\Windows\System32\sc.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:53
+Id           : 1
+RecordId     : 20683
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.385
+               ProcessGuid: {55857b6a-c449-6a44-8e01-000000000c00}
+               ProcessId: 13548
+               Image: C:\Windows\System32\sc.exe
+               FileVersion: 10.0.26100.4484 (WinBuild.160101.0800)
+               Description: Service Control Manager Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sc.exe
+               CommandLine: "C:\WINDOWS\system32\sc.exe" create TFMTestService binPath= 
+               "C:\Windows\System32\cmd.exe /c echo TFMTestService" start= demand
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=A452BFCB6000D03942DDFADDCDA5A7EB121447ED99B1BA090446B4A989F1F7AE,IMPHASH
+               =42DADBD60BBC453DD1773FDC089E19B7
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:16
+Id           : 5
+RecordId     : 20589
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:16.283
+               ProcessGuid: {55857b6a-c3e8-6a44-8501-000000000c00}
+               ProcessId: 7388
+               Image: C:\Windows\System32\schtasks.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:16
+Id           : 1
+RecordId     : 20588
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:16.270
+               ProcessGuid: {55857b6a-c3e8-6a44-8501-000000000c00}
+               ProcessId: 7388
+               Image: C:\Windows\System32\schtasks.exe
+               FileVersion: 10.0.26100.6725 (WinBuild.160101.0800)
+               Description: Task Scheduler Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: schtasks.exe
+               CommandLine: "C:\WINDOWS\system32\schtasks.exe" /Delete /TN TFMTestTask /F
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=B96AF3066F0B9DE8A460F77BAAE006C5372A266BE18C561DAA7C7AE8635D399D,IMPHASH
+               =A7B2338D5533AE221C0EB231BBEC0787
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:14
+Id           : 5
+RecordId     : 20587
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:14.234
+               ProcessGuid: {55857b6a-c3e6-6a44-8401-000000000c00}
+               ProcessId: 7604
+               Image: C:\Windows\System32\schtasks.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:14
+Id           : 1
+RecordId     : 20586
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:14.219
+               ProcessGuid: {55857b6a-c3e6-6a44-8401-000000000c00}
+               ProcessId: 7604
+               Image: C:\Windows\System32\schtasks.exe
+               FileVersion: 10.0.26100.6725 (WinBuild.160101.0800)
+               Description: Task Scheduler Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: schtasks.exe
+               CommandLine: "C:\WINDOWS\system32\schtasks.exe" /Query /TN TFMTestTask /V /FO LIST
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=B96AF3066F0B9DE8A460F77BAAE006C5372A266BE18C561DAA7C7AE8635D399D,IMPHASH
+               =A7B2338D5533AE221C0EB231BBEC0787
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:14
+Id           : 5
+RecordId     : 20584
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:14.201
+               ProcessGuid: {55857b6a-c3e6-6a44-8301-000000000c00}
+               ProcessId: 15284
+               Image: C:\Windows\System32\schtasks.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:38:14
+Id           : 1
+RecordId     : 20583
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:38:14.170
+               ProcessGuid: {55857b6a-c3e6-6a44-8301-000000000c00}
+               ProcessId: 15284
+               Image: C:\Windows\System32\schtasks.exe
+               FileVersion: 10.0.26100.6725 (WinBuild.160101.0800)
+               Description: Task Scheduler Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: schtasks.exe
+               CommandLine: "C:\WINDOWS\system32\schtasks.exe" /Create /TN TFMTestTask /TR 
+               notepad.exe /SC ONCE /ST 23:59 /F
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=B96AF3066F0B9DE8A460F77BAAE006C5372A266BE18C561DAA7C7AE8635D399D,IMPHASH
+               =A7B2338D5533AE221C0EB231BBEC0787
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:18
+Id           : 5
+RecordId     : 20389
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:18.602
+               ProcessGuid: {55857b6a-c336-6a44-6701-000000000c00}
+               ProcessId: 12552
+               Image: C:\Windows\System32\reg.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:18
+Id           : 12
+RecordId     : 20388
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry object added or deleted:
+               RuleName: -
+               EventType: DeleteValue
+               UtcTime: 2026-07-01 07:35:18.602
+               ProcessGuid: {55857b6a-c336-6a44-6701-000000000c00}
+               ProcessId: 12552
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run\TFMTest
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:18
+Id           : 1
+RecordId     : 20387
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:18.599
+               ProcessGuid: {55857b6a-c336-6a44-6701-000000000c00}
+               ProcessId: 12552
+               Image: C:\Windows\System32\reg.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Registry Console Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: reg.exe
+               CommandLine: "C:\WINDOWS\system32\reg.exe" delete 
+               HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=EF37663B44AC66920C6F33694DEEA01ACB78AE3F3012884819373FA04C3EB5F0,IMPHASH
+               =2DC6AE94704E0DBEAFC5A2BB00BD87F0
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 5
+RecordId     : 20386
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:16.582
+               ProcessGuid: {55857b6a-c334-6a44-6601-000000000c00}
+               ProcessId: 6224
+               Image: C:\Windows\System32\reg.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 1
+RecordId     : 20385
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:16.575
+               ProcessGuid: {55857b6a-c334-6a44-6601-000000000c00}
+               ProcessId: 6224
+               Image: C:\Windows\System32\reg.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Registry Console Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: reg.exe
+               CommandLine: "C:\WINDOWS\system32\reg.exe" query 
+               HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=EF37663B44AC66920C6F33694DEEA01ACB78AE3F3012884819373FA04C3EB5F0,IMPHASH
+               =2DC6AE94704E0DBEAFC5A2BB00BD87F0
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 5
+RecordId     : 20383
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:16.551
+               ProcessGuid: {55857b6a-c334-6a44-6501-000000000c00}
+               ProcessId: 15940
+               Image: C:\Windows\System32\reg.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 13
+RecordId     : 20382
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry value set:
+               RuleName: -
+               EventType: SetValue
+               UtcTime: 2026-07-01 07:35:16.549
+               ProcessGuid: {55857b6a-c334-6a44-6501-000000000c00}
+               ProcessId: 15940
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run\TFMTest
+               Details: C:\Windows\System32\notepad.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 12
+RecordId     : 20381
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry object added or deleted:
+               RuleName: -
+               EventType: CreateKey
+               UtcTime: 2026-07-01 07:35:16.549
+               ProcessGuid: {55857b6a-c334-6a44-6501-000000000c00}
+               ProcessId: 15940
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:35:16
+Id           : 1
+RecordId     : 20380
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:35:16.546
+               ProcessGuid: {55857b6a-c334-6a44-6501-000000000c00}
+               ProcessId: 15940
+               Image: C:\Windows\System32\reg.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Registry Console Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: reg.exe
+               CommandLine: "C:\WINDOWS\system32\reg.exe" add 
+               HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d 
+               C:\Windows\System32\notepad.exe /f
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=EF37663B44AC66920C6F33694DEEA01ACB78AE3F3012884819373FA04C3EB5F0,IMPHASH
+               =2DC6AE94704E0DBEAFC5A2BB00BD87F0
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:44
+Id           : 5
+RecordId     : 20345
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:44.516
+               ProcessGuid: {55857b6a-c2d8-6a44-5d01-000000000c00}
+               ProcessId: 8008
+               Image: C:\Windows\System32\reg.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:44
+Id           : 12
+RecordId     : 20344
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry object added or deleted:
+               RuleName: -
+               EventType: DeleteValue
+               UtcTime: 2026-07-01 07:33:44.514
+               ProcessGuid: {55857b6a-c2d8-6a44-5d01-000000000c00}
+               ProcessId: 8008
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run\TFMTest
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:44
+Id           : 1
+RecordId     : 20343
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:44.509
+               ProcessGuid: {55857b6a-c2d8-6a44-5d01-000000000c00}
+               ProcessId: 8008
+               Image: C:\Windows\System32\reg.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Registry Console Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: reg.exe
+               CommandLine: "C:\WINDOWS\system32\reg.exe" delete 
+               HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=EF37663B44AC66920C6F33694DEEA01ACB78AE3F3012884819373FA04C3EB5F0,IMPHASH
+               =2DC6AE94704E0DBEAFC5A2BB00BD87F0
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:42
+Id           : 5
+RecordId     : 20342
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:42.275
+               ProcessGuid: {55857b6a-c2d6-6a44-5c01-000000000c00}
+               ProcessId: 9176
+               Image: C:\Windows\System32\reg.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:42
+Id           : 13
+RecordId     : 20341
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry value set:
+               RuleName: -
+               EventType: SetValue
+               UtcTime: 2026-07-01 07:33:42.273
+               ProcessGuid: {55857b6a-c2d6-6a44-5c01-000000000c00}
+               ProcessId: 9176
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run\TFMTest
+               Details: C:\Windows\System32\notepad.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:42
+Id           : 12
+RecordId     : 20340
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Registry object added or deleted:
+               RuleName: -
+               EventType: CreateKey
+               UtcTime: 2026-07-01 07:33:42.273
+               ProcessGuid: {55857b6a-c2d6-6a44-5c01-000000000c00}
+               ProcessId: 9176
+               Image: C:\WINDOWS\system32\reg.exe
+               TargetObject: HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Wind
+               ows\CurrentVersion\Run
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:42
+Id           : 1
+RecordId     : 20339
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:42.265
+               ProcessGuid: {55857b6a-c2d6-6a44-5c01-000000000c00}
+               ProcessId: 9176
+               Image: C:\Windows\System32\reg.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Registry Console Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: reg.exe
+               CommandLine: "C:\WINDOWS\system32\reg.exe" add 
+               HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d 
+               C:\Windows\System32\notepad.exe /f
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=EF37663B44AC66920C6F33694DEEA01ACB78AE3F3012884819373FA04C3EB5F0,IMPHASH
+               =2DC6AE94704E0DBEAFC5A2BB00BD87F0
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:26
+Id           : 1
+RecordId     : 20188
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:26.553
+               ProcessGuid: {55857b6a-c2c6-6a44-5201-000000000c00}
+               ProcessId: 10324
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               FileVersion: 10.0.26100.5074 (WinBuild.160101.0800)
+               Description: Windows PowerShell
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: PowerShell.EXE
+               CommandLine: "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile 
+               -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAFQARgBNACAARgBhAHMAZQAgADQAIABwAHI
+               AdQBlAGIAYQAgAGIAZQBuAGkAZwBuAGEAIABlAG4AYwBvAGQAZQBkACAAYwBvAG0AbQBhAG4AZAAiACAAfAAgAE
+               8AdQB0AC0ARgBpAGwAZQAgAEMAOgBcAFQARgBNAF8AVAByAGkAYQBnAGUAXAByAGUAcABvAHIAdABzAFwAZgBhA
+               HMAZQA0AF8AUwAyAF8AZQBuAGMAbwBkAGUAZABfAG8AdQB0AHAAdQB0AC4AdAB4AHQA
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=0FF6F2C94BC7E2833A5F7E16DE1622E5DBA70396F31C7D5F56381870317E8C46,IMPHASH
+               =AFACF6DC9041114B198160AAB4D0AE77
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:33:25
+Id           : 5
+RecordId     : 20143
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:25.380
+               ProcessGuid: {55857b6a-c2c5-6a44-3f01-000000000c00}
+               ProcessId: 6056
+               Image: C:\Windows\System32\sc.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:33:25
+Id           : 1
+RecordId     : 20134
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:25.339
+               ProcessGuid: {55857b6a-c2c5-6a44-4101-000000000c00}
+               ProcessId: 8912
+               Image: C:\Windows\System32\conhost.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Console Window Host
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: CONHOST.EXE
+               CommandLine: \??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1
+               CurrentDirectory: C:\WINDOWS
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=A93CBB36B9C02364BE6A72817174C46F94B66715549F279C6592ED659D237911,IMPHASH
+               =D5AC805663F5B0C1826ED50248F028B9
+               ParentProcessGuid: {55857b6a-c2c5-6a44-3f01-000000000c00}
+               ParentProcessId: 6056
+               ParentImage: C:\Windows\System32\sc.exe
+               ParentCommandLine: "C:\WINDOWS\system32\sc.exe" start pushtoinstall registration
+               ParentUser: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:33:25
+Id           : 1
+RecordId     : 20130
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:33:25.326
+               ProcessGuid: {55857b6a-c2c5-6a44-3f01-000000000c00}
+               ProcessId: 6056
+               Image: C:\Windows\System32\sc.exe
+               FileVersion: 10.0.26100.4484 (WinBuild.160101.0800)
+               Description: Service Control Manager Configuration Tool
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sc.exe
+               CommandLine: "C:\WINDOWS\system32\sc.exe" start pushtoinstall registration
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=A452BFCB6000D03942DDFADDCDA5A7EB121447ED99B1BA090446B4A989F1F7AE,IMPHASH
+               =42DADBD60BBC453DD1773FDC089E19B7
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:32:34
+Id           : 7
+RecordId     : 20080
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Image loaded:
+               RuleName: -
+               UtcTime: 2026-07-01 07:32:34.146
+               ProcessGuid: {55857b6a-c292-6a44-3601-000000000c00}
+               ProcessId: 14700
+               Image: C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe
+               ImageLoaded: C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Notepad
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: NOTEPAD.EXE
+               Hashes: SHA256=AB15A95DE88AB0624307AE0E28E333756A2A522F650A0BE78749901F7DC32ECF,IMPHASH
+               =0E6BCCF88F4251909D1746DBA78CBA57
+               Signed: true
+               Signature: Microsoft Windows
+               SignatureStatus: Valid
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:32:34
+Id           : 5
+RecordId     : 20079
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:32:34.156
+               ProcessGuid: {55857b6a-c292-6a44-3601-000000000c00}
+               ProcessId: 14700
+               Image: C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:32:34
+Id           : 1
+RecordId     : 20078
+ProviderName : Microsoft-Windows-Sysmon
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:32:34.140
+               ProcessGuid: {55857b6a-c292-6a44-3601-000000000c00}
+               ProcessId: 14700
+               Image: C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Notepad
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: NOTEPAD.EXE
+               CommandLine: "C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe" 
+               CurrentDirectory: C:\Users\jjstestal\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-0904-060000000000}
+               LogonId: 0x60409
+               TerminalSessionId: 1
+               IntegrityLevel: High
+               Hashes: SHA256=AB15A95DE88AB0624307AE0E28E333756A2A522F650A0BE78749901F7DC32ECF,IMPHASH
+               =0E6BCCF88F4251909D1746DBA78CBA57
+               ParentProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ParentProcessId: 1708
+               ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentCommandLine: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               ParentUser: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:32:34
+Id           : 11
+RecordId     : 20077
+ProviderName : Microsoft-Windows-Sysmon
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:32:34.077
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\Users\jjstestal\AppData\Local\Temp\TFMTest\svchost-test.exe
+               CreationUtcTime: 2026-07-01 07:32:34.077
+               User: labwin\jjstestal
+
+
+

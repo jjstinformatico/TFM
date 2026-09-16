@@ -1,0 +1,134 @@
+{
+  "total_processes": 176,
+  "suspicious_simulated_processes": 14,
+  "normal_processes": 41,
+  "background_processes": 121,
+  "precision_recall": [
+    {
+      "k": 5,
+      "true_positives_at_k": 2,
+      "precision_at_k": 0.4,
+      "recall_at_k": 0.14285714285714285
+    },
+    {
+      "k": 10,
+      "true_positives_at_k": 5,
+      "precision_at_k": 0.5,
+      "recall_at_k": 0.35714285714285715
+    },
+    {
+      "k": 15,
+      "true_positives_at_k": 8,
+      "precision_at_k": 0.5333333333333333,
+      "recall_at_k": 0.5714285714285714
+    },
+    {
+      "k": 20,
+      "true_positives_at_k": 12,
+      "precision_at_k": 0.6,
+      "recall_at_k": 0.8571428571428571
+    }
+  ],
+  "top_10": [
+    {
+      "rank": 1,
+      "baseline_score": 109,
+      "risk_level": "alto",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S1;S2;S3;S4;S5;S6;S7",
+      "process_name": "powershell.exe",
+      "image": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +25 uso de PowerShell con EncodedCommand; +18 artefacto en carpeta Startup; +10 conexión de red asociada al proceso; +8 destinos de red externos; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense; +5 múltiples creaciones de fichero"
+    },
+    {
+      "rank": 2,
+      "baseline_score": 91,
+      "risk_level": "alto",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S2",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +25 uso de PowerShell con EncodedCommand; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": 3,
+      "baseline_score": 81,
+      "risk_level": "alto",
+      "label": "background",
+      "scenario_ids": "S2;S3",
+      "process_name": "firefox.exe",
+      "image": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +10 conexión de red asociada al proceso; +8 destinos de red externos; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +5 múltiples creaciones de fichero"
+    },
+    {
+      "rank": 4,
+      "baseline_score": 66,
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": 5,
+      "baseline_score": 61,
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": 6,
+      "baseline_score": 61,
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": 7,
+      "baseline_score": 61,
+      "risk_level": "medio",
+      "label": "normal",
+      "scenario_ids": "N4",
+      "process_name": "powershell.exe",
+      "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +18 artefacto en carpeta Startup; +8 uso de binario legítimo de administración o LOLBin; +10 varias palabras clave de interés forense"
+    },
+    {
+      "rank": 8,
+      "baseline_score": 51,
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S3",
+      "process_name": "reg.exe",
+      "image": "C:\\Windows\\System32\\reg.exe",
+      "main_reasons": "+20 modificación de clave Run asociada a persistencia; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +8 eventos de registro asociados al proceso"
+    },
+    {
+      "rank": 9,
+      "baseline_score": 51,
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S3",
+      "process_name": "reg.exe",
+      "image": "C:\\Windows\\System32\\reg.exe",
+      "main_reasons": "+20 modificación de clave Run asociada a persistencia; +8 uso de binario legítimo de administración o LOLBin; +5 línea de comandos larga; +10 varias palabras clave de interés forense; +8 eventos de registro asociados al proceso"
+    },
+    {
+      "rank": 10,
+      "baseline_score": 51,
+      "risk_level": "medio",
+      "label": "suspicious_simulated",
+      "scenario_ids": "S1",
+      "process_name": "svchost-test.exe",
+      "image": "C:\\Users\\JJSTES~1\\AppData\\Local\\Temp\\TFMTest\\svchost-test.exe",
+      "main_reasons": "+25 ejecución o artefacto asociado a ruta temporal; +10 ejecución o artefacto asociado a perfil de usuario; +6 relación padre-hijo poco frecuente en el dataset; +10 varias palabras clave de interés forense"
+    }
+  ]
+}

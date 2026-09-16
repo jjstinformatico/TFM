@@ -1,0 +1,1150 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260630165619
+Nombre de usuario: labwin\jjstestal
+Usuario RunAs: labwin\jjstestal
+Nombre de la configuración: 
+Máquina: LABWIN (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 10884
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\TFM_Triage\reports\transcript_laboratorio_fase2.txt
+PS C:\TFM_Triage\tools\Sysmon> Write-Output "FASE 2 - Instalación, configuración y validación de Sysmon"
+FASE 2 - Instalación, configuración y validación de Sysmon
+PS C:\TFM_Triage\tools\Sysmon> Write-Output "Fecha y hora de inicio de Fase 2:"
+Fecha y hora de inicio de Fase 2:
+PS C:\TFM_Triage\tools\Sysmon> Get-Date
+
+martes, 30 de junio de 2026 16:56:23
+
+
+PS C:\TFM_Triage\tools\Sysmon> Write-Output "Usuario actual:"
+Usuario actual:
+PS C:\TFM_Triage\tools\Sysmon> whoami
+labwin\jjstestal
+PS C:\TFM_Triage\tools\Sysmon> Write-Output "Equipo actual:"
+Equipo actual:
+PS C:\TFM_Triage\tools\Sysmon> hostname
+labwin
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\tools\Sysmon
+
+
+    Directorio: C:\TFM_Triage\tools
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     16:58                Sysmon
+
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\tools\Config
+
+
+    Directorio: C:\TFM_Triage\tools
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     16:58                Config
+
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\raw
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     16:58                raw
+
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\hashes
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     14:02                hashes
+
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\reports
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     16:56                reports
+
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\screenshots
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     14:16                screenshots
+
+
+PS C:\TFM_Triage\tools\Sysmon> [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+PS C:\TFM_Triage\tools\Sysmon> Invoke-WebRequest `
+  -Uri "https://download.sysinternals.com/files/Sysmon.zip" `
+  -OutFile "C:\TFM_Triage\tools\Sysmon\Sysmon.zip" `
+  | Out-File C:\TFM_Triage\reports\sysmon_download_output.txt
+PS C:\TFM_Triage\tools\Sysmon> Get-FileHash C:\TFM_Triage\tools\Sysmon\Sysmon.zip -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_sysmon_zip.txt
+PS C:\TFM_Triage\tools\Sysmon> Expand-Archive `
+  -Path C:\TFM_Triage\tools\Sysmon\Sysmon.zip `
+  -DestinationPath C:\TFM_Triage\tools\Sysmon `
+  -Force
+PS C:\TFM_Triage\tools\Sysmon> Get-ChildItem C:\TFM_Triage\tools\Sysmon |
+Select-Object Name, Length, LastWriteTime |
+Out-File C:\TFM_Triage\reports\sysmon_files_list.txt
+PS C:\TFM_Triage\tools\Sysmon> Get-AuthenticodeSignature C:\TFM_Triage\tools\Sysmon\Sysmon64.exe |
+Format-List * |
+Out-File C:\TFM_Triage\reports\sysmon_signature.txt
+PS C:\TFM_Triage\tools\Sysmon> (Get-Item C:\TFM_Triage\tools\Sysmon\Sysmon64.exe).VersionInfo |
+Format-List * |
+Out-File C:\TFM_Triage\reports\sysmon_version.txt
+PS C:\TFM_Triage\tools\Sysmon> Get-FileHash C:\TFM_Triage\tools\Sysmon\Sysmon*.exe -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_sysmon_binaries.txt
+PS C:\TFM_Triage\tools\Sysmon> notepad C:\TFM_Triage\tools\Config\sysmon_config_tfm.xml
+PS C:\TFM_Triage\tools\Sysmon> Get-FileHash C:\TFM_Triage\tools\Config\sysmon_config_tfm.xml -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_sysmon_config.txt
+PS C:\TFM_Triage\tools\Sysmon> cd C:\TFM_Triage\tools\Sysmon
+PS C:\TFM_Triage\tools\Sysmon> .\Sysmon64.exe -s > C:\TFM_Triage\reports\sysmon_schema.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+PS C:\TFM_Triage\tools\Sysmon> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s t e m   M o n i t o r   v 1 5 . 2 1   -   S y s t e m   a c t i v i t y   m o n i t o r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" B y   M a r k   R u s s i n o v i c h   a n d   T h o m a s   G a r n i e r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" C o p y r i g h t   ( C )   2 0 1 4 - 2 0 2 6   M i c r o s o f t   C o r p o r a t i o n "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" U s i n g   l i b x m l 2 .   l i b x m l 2   i s   C o p y r i g h t   ( C )   1 9 9 8 - 2 0 1 2   D a n i e l   V e i l l a r d .   A l l   R i g h t s   R e s e r v e d . "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s i n t e r n a l s   -   w w w . s y s i n t e r n a l s . c o m "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" < m a n i f e s t   s c h e m a v e r s i o n = " 4 . 9 1 "   b i n a r y v e r s i o n = " 1 8 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="     < c o n f i g u r a t i o n > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < o p t i o n s > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < ! - -   C o m m a n d - l i n e   o n l y   o p t i o n s   - - > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " i "   n a m e = " I n s t a l l "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " c "   n a m e = " C o n f i g u r a t i o n "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " u "   n a m e = " U n I n s t a l l "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " m "   n a m e = " M a n i f e s t "   a r g u m e n t = " n o n e "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " z "   n a m e = " C l i p b o a r d I n s t a n c e "   a r g u m e n t = " r e q u i r e d "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " t "   n a m e = " D e b u g M o d e "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " b t f "   n a m e = " B T F "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " s e r v i c e "   n a m e = " S e r v i c e "   a r g u m e n t = " n o n e "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " s "   n a m e = " P r i n t S c h e m a "   a r g u m e n t = " o p t i o n a l "   n o c o n f i g = " t r u e "   e x c l u s i v e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " n o l o g o "   n a m e = " N o L o g o "   a r g u m e n t = " n o n e "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " a c c e p t e u l a "   n a m e = " A c c e p t E u l a "   a r g u m e n t = " n o n e "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " - "   n a m e = " C o n f i g D e f a u l t "   a r g u m e n t = " n o n e "   n o c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < ! - -   C o n f i g u r a t i o n   f i l e   - - > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " a "   n a m e = " A r c h i v e D i r e c t o r y "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   n a m e = " C a p t u r e C l i p b o a r d "   a r g u m e n t = " n o n e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " d "   n a m e = " D r i v e r N a m e "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " d n s "   n a m e = " D n s Q u e r y "   a r g u m e n t = " o p t i o n a l "   r u l e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " g "   n a m e = " P i p e M o n i t o r i n g "   a r g u m e n t = " r e q u i r e d "   r u l e = " t r u e "   f o r c e c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " h "   n a m e = " H a s h A l g o r i t h m s "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   n a m e = " D n s L o o k u p "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   n a m e = " D r i v e r Q u e u e S i z e "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   n a m e = " S i g n i n g Q u e u e S i z e "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " k "   n a m e = " P r o c e s s A c c e s s "   a r g u m e n t = " r e q u i r e d "   r u l e = " t r u e "   f o r c e c o n f i g = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " l "   n a m e = " I m a g e L o a d "   a r g u m e n t = " o p t i o n a l "   r u l e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " n "   n a m e = " N e t w o r k C o n n e c t "   a r g u m e n t = " o p t i o n a l "   r u l e = " t r u e "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   s w i t c h = " r "   n a m e = " C h e c k R e v o c a t i o n "   a r g u m e n t = " o p t i o n a l "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < o p t i o n   n a m e = " F i e l d S i z e s "   a r g u m e n t = " r e q u i r e d "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / o p t i o n s > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < f i l t e r s   d e f a u l t = " i s " > i s , i s   n o t , c o n t a i n s , c o n t a i n s   a n y , i s   a n y , c o n t a i n s   a l l , e x c l u d e s , e x c l u d e s   a n y , e x c l u d e s   a l l , b e g i n   w i t h , n o t   b e g i n   w i t h , e n d   w i t h , n o t   e n d   w i t h , l e s s   t h a n , m o r e   t h a n , i m a g e < / f i l t e r s > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="     < / c o n f i g u r a t i o n > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="     < e v e n t s > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ E R R O R "   v a l u e = " 2 5 5 "   l e v e l = " E r r o r "   t e m p l a t e = " E r r o r   r e p o r t "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I D "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s c r i p t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ C R E A T E _ P R O C E S S "   v a l u e = " 1 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P r o c e s s   C r e a t e "   r u l e n a m e = " P r o c e s s C r e a t e "   r u l e d e f a u l t = " i n c l u d e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " F i l e V e r s i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s c r i p t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o d u c t "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o m p a n y "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " O r i g i n a l F i l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o m m a n d L i n e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C u r r e n t D i r e c t o r y "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " L o g o n G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " L o g o n I d "   i n T y p e = " w i n : H e x I n t 6 4 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T e r m i n a l S e s s i o n I d "   i n T y p e = " w i n : U I n t 3 2 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I n t e g r i t y L e v e l "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P a r e n t P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P a r e n t P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P a r e n t I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P a r e n t C o m m a n d L i n e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P a r e n t U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ T I M E "   v a l u e = " 2 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   c r e a t i o n   t i m e   c h a n g e d "   r u l e n a m e = " F i l e C r e a t e T i m e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C r e a t i o n U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r e v i o u s C r e a t i o n U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ N E T W O R K _ C O N N E C T "   v a l u e = " 3 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " N e t w o r k   c o n n e c t i o n   d e t e c t e d "   r u l e n a m e = " N e t w o r k C o n n e c t "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o t o c o l "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I n i t i a t e d "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e I s I p v 6 "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e I p "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e H o s t n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P o r t "   i n T y p e = " w i n : U I n t 1 6 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P o r t N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n I s I p v 6 "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n I p "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n H o s t n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n P o r t "   i n T y p e = " w i n : U I n t 1 6 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n P o r t N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ S E R V I C E _ S T A T E _ C H A N G E "   v a l u e = " 4 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " S y s m o n   s e r v i c e   s t a t e   c h a n g e d "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S t a t e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " V e r s i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S c h e m a V e r s i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ P R O C E S S _ T E R M I N A T E "   v a l u e = " 5 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P r o c e s s   t e r m i n a t e d "   r u l e n a m e = " P r o c e s s T e r m i n a t e "   r u l e d e f a u l t = " i n c l u d e "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ D R I V E R _ L O A D "   v a l u e = " 6 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " D r i v e r   l o a d e d "   r u l e n a m e = " D r i v e r L o a d "   v e r s i o n = " 4 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e L o a d e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n a t u r e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n a t u r e S t a t u s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ I M A G E _ L O A D "   v a l u e = " 7 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " I m a g e   l o a d e d "   r u l e n a m e = " I m a g e L o a d "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e L o a d e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " F i l e V e r s i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s c r i p t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o d u c t "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o m p a n y "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " O r i g i n a l F i l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n a t u r e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S i g n a t u r e S t a t u s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ C R E A T E _ R E M O T E _ T H R E A D "   v a l u e = " 8 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " C r e a t e R e m o t e T h r e a d   d e t e c t e d "   r u l e n a m e = " C r e a t e R e m o t e T h r e a d "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " N e w T h r e a d I d "   i n T y p e = " w i n : U I n t 3 2 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S t a r t A d d r e s s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S t a r t M o d u l e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S t a r t F u n c t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ R A W A C C E S S _ R E A D "   v a l u e = " 9 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " R a w A c c e s s R e a d   d e t e c t e d "   r u l e n a m e = " R a w A c c e s s R e a d "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e v i c e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ A C C E S S _ P R O C E S S "   v a l u e = " 1 0 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P r o c e s s   a c c e s s e d "   r u l e n a m e = " P r o c e s s A c c e s s "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P r o c e s s G U I D "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e T h r e a d I d "   i n T y p e = " w i n : U I n t 3 2 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t P r o c e s s G U I D "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " G r a n t e d A c c e s s "   i n T y p e = " w i n : H e x I n t 3 2 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C a l l T r a c e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S o u r c e U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ C R E A T E "   v a l u e = " 1 1 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   c r e a t e d "   r u l e n a m e = " F i l e C r e a t e "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C r e a t i o n U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ R E G _ K E Y "   v a l u e = " 1 2 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " R e g i s t r y   o b j e c t   a d d e d   o r   d e l e t e d "   r u l e n a m e = " R e g i s t r y E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t O b j e c t "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ R E G _ S E T V A L U E "   v a l u e = " 1 3 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " R e g i s t r y   v a l u e   s e t "   r u l e n a m e = " R e g i s t r y E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t O b j e c t "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e t a i l s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ R E G _ N A M E "   v a l u e = " 1 4 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " R e g i s t r y   o b j e c t   r e n a m e d "   r u l e n a m e = " R e g i s t r y E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t O b j e c t "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " N e w N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ C R E A T E _ S T R E A M _ H A S H "   v a l u e = " 1 5 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   s t r e a m   c r e a t e d "   r u l e n a m e = " F i l e C r e a t e S t r e a m H a s h "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 2 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C r e a t i o n U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o n t e n t s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ S E R V I C E _ C O N F I G U R A T I O N _ C H A N G E "   v a l u e = " 1 6 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " S y s m o n   c o n f i g   s t a t e   c h a n g e d "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o n f i g u r a t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o n f i g u r a t i o n F i l e H a s h "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ C R E A T E _ N A M E D P I P E "   v a l u e = " 1 7 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P i p e   C r e a t e d "   r u l e n a m e = " P i p e E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 1 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P i p e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ C O N N E C T _ N A M E D P I P E "   v a l u e = " 1 8 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P i p e   C o n n e c t e d "   r u l e n a m e = " P i p e E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 1 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P i p e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ W M I _ F I L T E R "   v a l u e = " 1 9 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " W m i E v e n t F i l t e r   a c t i v i t y   d e t e c t e d "   r u l e n a m e = " W m i E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " O p e r a t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t N a m e s p a c e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " Q u e r y "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ W M I _ C O N S U M E R "   v a l u e = " 2 0 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " W m i E v e n t C o n s u m e r   a c t i v i t y   d e t e c t e d "   r u l e n a m e = " W m i E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " O p e r a t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " D e s t i n a t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ W M I _ B I N D I N G "   v a l u e = " 2 1 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " W m i E v e n t C o n s u m e r T o F i l t e r   a c t i v i t y   d e t e c t e d "   r u l e n a m e = " W m i E v e n t "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 3 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " E v e n t T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " O p e r a t i o n "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C o n s u m e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " F i l t e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ D N S _ Q U E R Y "   v a l u e = " 2 2 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " D n s   q u e r y "   r u l e n a m e = " D n s Q u e r y "   r u l e d e f a u l t = " e x c l u d e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " Q u e r y N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " Q u e r y S t a t u s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " Q u e r y R e s u l t s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ D E L E T E "   v a l u e = " 2 3 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   D e l e t e   a r c h i v e d "   r u l e n a m e = " F i l e D e l e t e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I s E x e c u t a b l e "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " A r c h i v e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ C L I P B O A R D "   v a l u e = " 2 4 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " C l i p b o a r d   c h a n g e d "   r u l e n a m e = " C l i p b o a r d C h a n g e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " S e s s i o n "   i n T y p e = " w i n : U I n t 3 2 "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " C l i e n t I n f o "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " A r c h i v e d "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ P R O C E S S _ I M A G E _ T A M P E R I N G "   v a l u e = " 2 5 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " P r o c e s s   T a m p e r i n g "   r u l e n a m e = " P r o c e s s T a m p e r i n g "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T y p e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ D E L E T E _ D E T E C T E D "   v a l u e = " 2 6 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   D e l e t e   l o g g e d "   r u l e n a m e = " F i l e D e l e t e D e t e c t e d "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I s E x e c u t a b l e "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ B L O C K _ E X E "   v a l u e = " 2 7 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   B l o c k   E x e c u t a b l e "   r u l e n a m e = " F i l e B l o c k E x e c u t a b l e "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ B L O C K _ S H R E D D I N G "   v a l u e = " 2 8 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   B l o c k   S h r e d d i n g "   r u l e n a m e = " F i l e B l o c k S h r e d d i n g "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I s E x e c u t a b l e "   i n T y p e = " w i n : B o o l e a n "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < e v e n t   n a m e = " S Y S M O N E V E N T _ F I L E _ E X E _ D E T E C T E D "   v a l u e = " 2 9 "   l e v e l = " I n f o r m a t i o n a l "   t e m p l a t e = " F i l e   E x e c u t a b l e   D e t e c t e d "   r u l e n a m e = " F i l e E x e c u t a b l e D e t e c t e d "   v e r s i o n = " 5 " > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " R u l e N a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U t c T i m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s G u i d "   i n T y p e = " w i n : G U I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " P r o c e s s I d "   i n T y p e = " w i n : U I n t 3 2 "   o u t T y p e = " w i n : P I D "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " U s e r "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " I m a g e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " T a r g e t F i l e n a m e "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="             < d a t a   n a m e = " H a s h e s "   i n T y p e = " w i n : U n i c o d e S t r i n g "   o u t T y p e = " x s : s t r i n g "   / > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         < / e v e n t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="     < / e v e n t s > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" < / m a n i f e s t > "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+PS C:\TFM_Triage\tools\Sysmon> cd C:\TFM_Triage\tools\Sysmon
+PS C:\TFM_Triage\tools\Sysmon> .\Sysmon64.exe -accepteula -i C:\TFM_Triage\tools\Config\sysmon_config_tfm.xml > C:\TFM_Triage\reports\sysmon_install_output.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+PS C:\TFM_Triage\tools\Sysmon> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s t e m   M o n i t o r   v 1 5 . 2 1   -   S y s t e m   a c t i v i t y   m o n i t o r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" B y   M a r k   R u s s i n o v i c h   a n d   T h o m a s   G a r n i e r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" C o p y r i g h t   ( C )   2 0 1 4 - 2 0 2 6   M i c r o s o f t   C o r p o r a t i o n "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" U s i n g   l i b x m l 2 .   l i b x m l 2   i s   C o p y r i g h t   ( C )   1 9 9 8 - 2 0 1 2   D a n i e l   V e i l l a r d .   A l l   R i g h t s   R e s e r v e d . "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s i n t e r n a l s   -   w w w . s y s i n t e r n a l s . c o m "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" L o a d i n g   c o n f i g u r a t i o n   f i l e   w i t h   s c h e m a   v e r s i o n   4 . 9 0 "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s m o n   s c h e m a   v e r s i o n :   4 . 9 1 "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" C o n f i g u r a t i o n   f i l e   v a l i d a t e d . "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" T h e   s e r v i c e   S y s m o n 6 4   i s   a l r e a d y   r e g i s t e r e d .   U n i n s t a l l   S y s m o n   b e f o r e   r e i n s t a l l i n g . "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+PS C:\TFM_Triage\tools\Sysmon> Get-Service Sysmon64 |
+Format-List * |
+Out-File C:\TFM_Triage\reports\estado_servicio_sysmon_postinstalacion.txt
+PS C:\TFM_Triage\tools\Sysmon> sc.exe query Sysmon64 > C:\TFM_Triage\reports\sc_query_sysmon64.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="NOMBRE_SERVICIO: Sysmon64 "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        TIPO               : 10  WIN32_OWN_PROCESS  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ESTADO             : 4  RUNNING "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        CÓD_SALIDA_WIN32   : 0  (0x0)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        CÓD_SALIDA_SERVICIO: 0  (0x0)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        PUNTO_COMPROB.     : 0x0"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        INDICACIÓN_INICIO  : 0x0"
+PS C:\TFM_Triage\tools\Sysmon> wevtutil gli Microsoft-Windows-Sysmon/Operational >
+En línea: 1 Carácter: 52
++ wevtutil gli Microsoft-Windows-Sysmon/Operational >
++                                                    ~
+Falta la especificación de archivo después del operador de redirección.
+En línea: 1 Carácter: 52
++ wevtutil gli Microsoft-Windows-Sysmon/Operational >
++                                                    ~
+Falta la especificación de archivo después del operador de redirección.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+
+PS C:\TFM_Triage\tools\Sysmon> C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil gli Microsoft-Windows-Sysmon/Operational > C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txt
+C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil : El término 
+'C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil' no se reconoce como nombre de un cmdlet, función, 
+archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de 
+acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil gli ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...ion.txtwevtutil:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil : El término
+'C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil' no se reconoce como nombre de un
+cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el
+nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txtwevtutil gli ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...ion.txtwevtutil:String) [], Command
+   NotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\TFM_Triage\tools\Sysmon> wevtutil gli Microsoft-Windows-Sysmon/Operational > C:\TFM_Triage\reports\info_log_sysmon_postinstalacion.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="creationTime: 2026-06-30T12:02:32.2813829Z"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="lastAccessTime: 2026-06-30T15:06:24.5355933Z"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="lastWriteTime: 2026-06-30T15:06:24.5355933Z"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="fileSize: 10555392"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="attributes: 32"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="numberOfLogRecords: 11638"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="oldestRecordNumber: 1"
+PS C:\TFM_Triage\tools\Sysmon> Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational |
+Format-List * |
+Out-File C:\TFM_Triage\reports\info_win_event_sysmon_postinstalacion.txt
+PS C:\TFM_Triage\tools\Sysmon> .\Sysmon64.exe -c > C:\TFM_Triage\reports\active_sysmon_config.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+PS C:\TFM_Triage\tools\Sysmon> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s t e m   M o n i t o r   v 1 5 . 2 1   -   S y s t e m   a c t i v i t y   m o n i t o r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" B y   M a r k   R u s s i n o v i c h   a n d   T h o m a s   G a r n i e r "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" C o p y r i g h t   ( C )   2 0 1 4 - 2 0 2 6   M i c r o s o f t   C o r p o r a t i o n "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" U s i n g   l i b x m l 2 .   l i b x m l 2   i s   C o p y r i g h t   ( C )   1 9 9 8 - 2 0 1 2   D a n i e l   V e i l l a r d .   A l l   R i g h t s   R e s e r v e d . "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" S y s i n t e r n a l s   -   w w w . s y s i n t e r n a l s . c o m "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" C u r r e n t   c o n f i g u r a t i o n : "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   S e r v i c e   n a m e :                                     S y s m o n 6 4 "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   D r i v e r   n a m e :                                       S y s m o n D r v "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   C o n f i g   f i l e :                                       C : \ T F M _ T r i a g e \ t o o l s \ C o n f i g \ s y s m o n _ c o n f i g _ t f m . x m l "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   C o n f i g   h a s h :                                       S H A 2 5 6 = 5 4 5 B A 1 5 C F B E E B F 8 B 4 D C 7 D C F C 1 8 0 A 6 1 6 B 2 5 C 9 D D 4 3 9 F D 1 1 B 5 9 8 A 4 1 7 F A 5 6 A 6 C 5 3 5 7 "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   H a s h i n g A l g o r i t h m s :                           S H A 2 5 6 , I M P H A S H "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   N e t w o r k   c o n n e c t i o n :                         e n a b l e d "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   A r c h i v e   D i r e c t o r y :                           - "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   I m a g e   l o a d i n g :                                   e n a b l e d "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   C R L   c h e c k i n g :                                     d i s a b l e d "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   D N S   l o o k u p :                                         e n a b l e d "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" R u l e   c o n f i g u r a t i o n   ( v e r s i o n   4 . 9 0 ) : "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   P r o c e s s C r e a t e                                             o n m a t c h :   e x c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   N e t w o r k C o n n e c t                                           o n m a t c h :   e x c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   P r o c e s s T e r m i n a t e                                       o n m a t c h :   e x c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   I m a g e L o a d                                                     o n m a t c h :   i n c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 I m a g e L o a d e d                                         f i l t e r :   c o n t a i n s           v a l u e :   ' \ T e m p \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 I m a g e L o a d e d                                         f i l t e r :   c o n t a i n s           v a l u e :   ' \ A p p D a t a \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 I m a g e L o a d e d                                         f i l t e r :   c o n t a i n s           v a l u e :   ' \ D o w n l o a d s \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   F i l e C r e a t e                                                   o n m a t c h :   i n c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 T a r g e t F i l e n a m e                                   f i l t e r :   b e g i n   w i t h       v a l u e :   ' C : \ T F M _ T r i a g e \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 T a r g e t F i l e n a m e                                   f i l t e r :   c o n t a i n s           v a l u e :   ' \ T e m p \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 T a r g e t F i l e n a m e                                   f i l t e r :   c o n t a i n s           v a l u e :   ' \ A p p D a t a \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 T a r g e t F i l e n a m e                                   f i l t e r :   c o n t a i n s           v a l u e :   ' \ D o w n l o a d s \ ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   R e g i s t r y E v e n t                                             o n m a t c h :   i n c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" 	 T a r g e t O b j e c t                                       f i l t e r :   c o n t a i n s           v a l u e :   ' \ S o f t w a r e \ M i c r o s o f t \ W i n d o w s \ C u r r e n t V e r s i o n \ R u n ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   -   D n s Q u e r y                                                       o n m a t c h :   e x c l u d e       c o m b i n e   r u l e s   u s i n g   ' A n d ' "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=" "
+PS C:\TFM_Triage\tools\Sysmon> Get-Date | Out-File C:\TFM_Triage\reports\fase2_validation_start.txt
+PS C:\TFM_Triage\tools\Sysmon> @'
+FASE 2 - Comandos de validación de Sysmon
+
+1. Crear proceso notepad.exe.
+2. Crear archivo dentro de C:\TFM_Triage.
+3. Ejecutar consulta de red a www.microsoft.com:443.
+4. Crear y eliminar valor benigno en clave Run de HKCU.
+'@ | Out-File C:\TFM_Triage\reports\fase2_validation_commands.txt
+PS C:\TFM_Triage\tools\Sysmon> $p = Start-Process notepad.exe -PassThru
+PS C:\TFM_Triage\tools\Sysmon> Start-Sleep -Seconds 3
+PS C:\TFM_Triage\tools\Sysmon> Stop-Process -Id $p.Id -Force
+Stop-Process : No se encuentra ningún proceso con el identificador 9636.
+En línea: 1 Carácter: 1
++ Stop-Process -Id $p.Id -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (9636:Int32) [Stop-Process], ProcessCommandException
+    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand
+Stop-Process : No se encuentra ningún proceso con el identificador 9636.
+En línea: 1 Carácter: 1
++ Stop-Process -Id $p.Id -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (9636:Int32) [Stop-Process], ProcessCommandException
+    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessComm
+   and
+
+PS C:\TFM_Triage\tools\Sysmon> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\validation
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30/06/2026     17:12                validation
+
+
+PS C:\TFM_Triage\tools\Sysmon> "Prueba de validación Sysmon Fase 2" |
+Out-File C:\TFM_Triage\validation\fase2_filecreate_test.txt
+PS C:\TFM_Triage\tools\Sysmon> Test-NetConnection www.microsoft.com -Port 443 |
+Out-File C:\TFM_Triage\reports\fase2_test_netconnection_microsoft_443.txt
+PS C:\TFM_Triage\tools\Sysmon> reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFM_FASE2_VALIDACION /t REG_SZ /d "C:\Windows\System32\notepad.exe" /f
+
+PS C:\TFM_Triage\tools\Sysmon> reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
+En línea: 1 Carácter: 63
++ reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
++                                                               ~
+Falta la especificación de archivo después del operador de redirección.
+En línea: 1 Carácter: 63
++ reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
++                                                               ~
+Falta la especificación de archivo después del operador de redirección.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+
+PS C:\TFM_Triage\tools\Sysmon> C:\TFM_Triage\reports\fase2_reg_run_after_add.txt
+C:\TFM_Triage\reports\fase2_reg_run_after_add.txt : El término 'C:\TFM_Triage\reports\fase2_reg_run_after_add.txt' no 
+se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió 
+correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\fase2_reg_run_after_add.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...n_after_add.txt:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+C:\TFM_Triage\reports\fase2_reg_run_after_add.txt : El término
+'C:\TFM_Triage\reports\fase2_reg_run_after_add.txt' no se reconoce como nombre de un cmdlet,
+función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o,
+si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\fase2_reg_run_after_add.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...n_after_add.txt:String) [], Command
+   NotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\TFM_Triage\tools\Sysmon> reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFM_FASE2_VALIDACION /f
+
+PS C:\TFM_Triage\tools\Sysmon> Get-Date | Out-File C:\TFM_Triage\reports\fase2_validation_end.txt
+PS C:\TFM_Triage\tools\Sysmon> Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational |
+Measure-Object |
+Out-File C:\TFM_Triage\reports\count_sysmon_postinstalacion.txt
+PS C:\TFM_Triage\tools\Sysmon> Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 30 |
+Select-Object TimeCreated, Id, ProviderName, MachineName, Message |
+Format-List |
+Out-File C:\TFM_Triage\reports\sample_sysmon_events.txt
+PS C:\TFM_Triage\tools\Sysmon> wevtutil epl Microsoft-Windows-Sysmon/Operational C:\TFM_Triage\raw\fase2_sysmon_validacion.evtx
+
+PS C:\TFM_Triage\tools\Sysmon> Get-FileHash C:\TFM_Triage\raw\fase2_sysmon_validacion.evtx -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_fase2_sysmon_validacion_evtx.txt
+PS C:\TFM_Triage\tools\Sysmon> .\Sysmon64.exe -c C:\TFM_Triage\tools\Config\sysmon_config_tfm.xml
+
+PS C:\TFM_Triage\tools\Sysmon> Get-ChildItem C:\TFM_Triage -Recurse |
+Select-Object FullName, Length, LastWriteTime |
+Out-File C:\TFM_Triage\reports\listado_archivos_fase2.txt
+PS C:\TFM_Triage\tools\Sysmon> Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260630172337
+**********************

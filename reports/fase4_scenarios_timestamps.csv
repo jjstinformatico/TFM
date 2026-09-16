@@ -1,0 +1,9 @@
+﻿scenario_id,scenario_type,description,start_time,end_time,expected_processes,notes
+S1,suspicious_simulated,Ejecución de binario copiado en ruta temporal,2026-07-01 09:32:33.982,2026-07-01 09:32:39.211,svchost-test.exe,Simulación benigna sin malware
+S2,suspicious_simulated,PowerShell con EncodedCommand benigno,2026-07-01 09:33:26.457,2026-07-01 09:33:27.288,powershell.exe,Comando codificado no malicioso
+S3,suspicious_simulated,Modificación de clave Run de usuario,2026-07-01 09:33:42.244,2026-07-01 09:33:44.522,reg.exe,Valor TFMTest creado y eliminado
+S3,suspicious_simulated,Modificación de clave Run de usuario,2026-07-01 09:35:16.537,2026-07-01 09:35:18.623,reg.exe,Valor TFMTest creado y eliminado
+S4,suspicious_simulated,Creación de tarea programada benigna,2026-07-01 09:38:14.147,2026-07-01 09:38:16.296,schtasks.exe,Tarea TFMTestTask creada y eliminada
+S5,suspicious_simulated,Creación de servicio de prueba,2026-07-01 09:39:53.365,2026-07-01 09:39:55.463,sc.exe,Servicio TFMTestService creado y eliminado
+S6,suspicious_simulated,Creación de fichero benigno en carpeta Startup,2026-07-01 09:41:35.408,2026-07-01 09:41:37.550,powershell.exe,tfm_startup_test.bat creado y eliminado
+S7,suspicious_simulated,Conexión de red desde PowerShell,2026-07-01 09:41:57.630,2026-07-01 09:42:00.816,powershell.exe,Conexión HTTP y DNS a www.example.com

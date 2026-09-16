@@ -1,0 +1,438 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260701093039
+Nombre de usuario: labwin\jjstestal
+Usuario RunAs: labwin\jjstestal
+Nombre de la configuración: 
+Máquina: LABWIN (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 1708
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\TFM_Triage\reports\transcript_laboratorio_fase4.txt
+PS C:\Users\jjstestal> Write-Output "FASE 4 - Generación de actividad sospechosa simulada"
+FASE 4 - Generación de actividad sospechosa simulada
+PS C:\Users\jjstestal> Write-Output "Fecha y hora de inicio de Fase 4:"
+Fecha y hora de inicio de Fase 4:
+PS C:\Users\jjstestal> Get-Date
+
+miércoles, 1 de julio de 2026 9:30:45
+
+
+PS C:\Users\jjstestal> Write-Output "Usuario actual:"
+Usuario actual:
+PS C:\Users\jjstestal> whoami
+labwin\jjstestal
+PS C:\Users\jjstestal> Write-Output "Equipo actual:"
+Equipo actual:
+PS C:\Users\jjstestal> hostname
+labwin
+PS C:\Users\jjstestal> Write-Output "Comprobación del servicio Sysmon:"
+Comprobación del servicio Sysmon:
+PS C:\Users\jjstestal> Get-Service Sysmon64
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  Sysmon64           Sysmon64
+
+
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage\raw\fase3_sysmon_normal.evtx
+True
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage\raw\fase3_powershell_normal.evtx
+True
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage\raw\fase3_security_normal.evtx
+True
+PS C:\Users\jjstestal> Test-Path C:\TFM_Triage\raw\fase3_system_normal.evtx
+True
+PS C:\Users\jjstestal> wevtutil cl Microsoft-Windows-Sysmon/Operational
+
+PS C:\Users\jjstestal> wevtutil cl Microsoft-Windows-PowerShell/Operational
+
+PS C:\Users\jjstestal> @'
+Fase 4 - Reset controlado de logs
+
+Antes de iniciar la generación de actividad sospechosa simulada se limpiaron los canales:
+- Microsoft-Windows-Sysmon/Operational
+- Microsoft-Windows-PowerShell/Operational
+
+Los EVTX de la Fase 3 ya habían sido exportados y preservados previamente.
+No se limpiaron los canales Security ni System; en estos casos se usará filtrado temporal durante el análisis.
+La limpieza se realiza únicamente con finalidad metodológica para aislar los eventos sospechosos simulados.
+'@ | Out-File C:\TFM_Triage\reports\fase4_reset_logs.txt
+PS C:\Users\jjstestal> Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational |
+Format-List LogName, IsEnabled, RecordCount, FileSize, LastWriteTime |
+Out-File C:\TFM_Triage\reports\fase4_sysmon_log_after_reset.txt
+PS C:\Users\jjstestal> "scenario_id,scenario_type,description,start_time,end_time,expected_processes,notes" |
+Out-File C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv -Encoding UTF8
+PS C:\Users\jjstestal> Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff" |
+Out-File C:\TFM_Triage\reports\fase4_start.txt
+PS C:\Users\jjstestal> @'
+scenario_id,label,description,expected_processes,expected_artifacts
+S1,suspicious_simulated,Ejecución de binario desde ruta temporal,svchost-test.exe,%TEMP%\TFMTest\svchost-test.exe
+S2,suspicious_simulated,PowerShell con comando codificado benigno,powershell.exe,EncodedCommand
+S3,suspicious_simulated,Modificación de clave Run de usuario,reg.exe,HKCU\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest
+S4,suspicious_simulated,Creación de tarea programada benigna,schtasks.exe,TFMTestTask
+S5,suspicious_simulated,Creación de servicio de prueba,sc.exe,TFMTestService
+S6,suspicious_simulated,Creación de fichero en carpeta Startup,powershell.exe,Startup\tfm_startup_test.bat
+S7,suspicious_simulated,Conexión de red desde PowerShell,powershell.exe,www.example.com:80
+'@ | Out-File C:\TFM_Triage\reports\fase4_labels.csv -Encoding UTF8
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path "$env:TEMP\TFMTest"
+
+
+    Directorio: C:\Users\JJSTES~1\AppData\Local\Temp
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026      9:32                TFMTest
+
+
+PS C:\Users\jjstestal> Copy-Item C:\Windows\System32\notepad.exe "$env:TEMP\TFMTest\svchost-test.exe" -Force
+PS C:\Users\jjstestal> $p = Start-Process "$env:TEMP\TFMTest\svchost-test.exe" -PassThru
+PS C:\Users\jjstestal> Start-Sleep -Seconds 5
+PS C:\Users\jjstestal> Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S1,suspicious_simulated,Ejecución de binario copiado en ruta temporal,$start,$end,svchost-test.exe,Simulación benigna sin malware" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S1 - Ejecución desde ruta temporal
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación de carpeta temporal %TEMP%\TFMTest.
+- Copia de notepad.exe como svchost-test.exe.
+- Ejecución del binario copiado.
+- Finalización del proceso.
+
+Interés forense:
+La ejecución de binarios desde rutas temporales o de perfil de usuario puede ser relevante en triage forense, especialmente cuando el nombre del ejecutable intenta imitar procesos legítimos del sistema.
+
+Naturaleza:
+Simulación benigna. No se ejecuta malware real.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S1_temp_execution.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> $cmd = 'Write-Output "TFM Fase 4 prueba benigna encoded command" | Out-File C:\TFM_Triage\reports\fase4_S2_encoded_output.txt'
+PS C:\Users\jjstestal> $bytes = [System.Text.Encoding]::Unicode.GetBytes($cmd)
+PS C:\Users\jjstestal> $encoded = [Convert]::ToBase64String($bytes)
+PS C:\Users\jjstestal> $encoded | Out-File C:\TFM_Triage\reports\fase4_S2_encoded_string.txt
+PS C:\Users\jjstestal> powershell.exe -NoProfile -EncodedCommand $encoded
+
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S2,suspicious_simulated,PowerShell con EncodedCommand benigno,$start,$end,powershell.exe,Comando codificado no malicioso" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S2 - PowerShell con comando codificado benigno
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Generación de comando PowerShell codificado en Base64.
+- Ejecución mediante -EncodedCommand.
+- Escritura de salida benigna en reports.
+
+Interés forense:
+El uso de -EncodedCommand puede emplearse legítimamente, pero también se observa en técnicas de ocultación u ofuscación. En este laboratorio se utiliza únicamente para generar una señal detectable y segura.
+
+Naturaleza:
+Simulación benigna. No se ejecuta malware real.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S2_powershell_encoded.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d "C:\Windows\System32\notepad.exe" /f
+
+PS C:\Users\jjstestal> reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
+En línea: 1 Carácter: 63
++ reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
++                                                               ~
+Falta la especificación de archivo después del operador de redirección.
+En línea: 1 Carácter: 63
++ reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >
++                                                               ~
+Falta la especificación de archivo después del operador de redirección.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFileSpecification
+
+PS C:\Users\jjstestal> C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt
+C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt : El término 
+'C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt' no se reconoce como nombre de un cmdlet, función, archivo de 
+script o programa ejecutable. Compruebe si escribió correctamente el nombre o, si incluyó una ruta de acceso, compruebe 
+que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...y_after_add.txt:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt : El término
+'C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt' no se reconoce como nombre de un cmdlet,
+función, archivo de script o programa ejecutable. Compruebe si escribió correctamente el nombre o,
+si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\TFM_Triage\r...y_after_add.txt:String) [], Command
+   NotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\jjstestal> Start-Sleep -Seconds 2
+PS C:\Users\jjstestal> reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f
+
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S3,suspicious_simulated,Modificación de clave Run de usuario,$start,$end,reg.exe,Valor TFMTest creado y eliminado" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S3 - Modificación de clave Run
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación de valor TFMTest en HKCU\Software\Microsoft\Windows\CurrentVersion\Run.
+- Consulta de la clave.
+- Eliminación del valor creado.
+
+Interés forense:
+Las claves Run son un mecanismo habitual de persistencia. En este escenario se simula de forma controlada usando notepad.exe.
+
+Naturaleza:
+Simulación benigna y reversible.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S3_registry_run.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d "C:\Windows\System32\notepad.exe" /f
+
+PS C:\Users\jjstestal> reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run >C:\TFM_Triage\reports\fase4_S3_run_key_after_add.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    OneDrive    REG_SZ    "C:\Users\jjstestal\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    Mozilla-Firefox-308046B0AF4A39CB    REG_SZ    "C:\Program Files\Mozilla Firefox\firefox.exe" -os-autostart"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    MicrosoftEdgeAutoLaunch_3E1C7BEF02F631656BFC579B7C8E2BB3    REG_SZ    "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --no-startup-window --win-session-start"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    TFMTest    REG_SZ    C:\Windows\System32\notepad.exe"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+PS C:\Users\jjstestal> Start-Sleep -Seconds 2
+PS C:\Users\jjstestal> reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f
+
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S3,suspicious_simulated,Modificación de clave Run de usuario,$start,$end,reg.exe,Valor TFMTest creado y eliminado" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S3 - Modificación de clave Run
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación de valor TFMTest en HKCU\Software\Microsoft\Windows\CurrentVersion\Run.
+- Consulta de la clave.
+- Eliminación del valor creado.
+
+Interés forense:
+Las claves Run son un mecanismo habitual de persistencia. En este escenario se simula de forma controlada usando notepad.exe.
+
+Naturaleza:
+Simulación benigna y reversible.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S3_registry_run.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> schtasks /Create /TN "TFMTestTask" /TR "notepad.exe" /SC ONCE /ST 23:59 /F
+
+PS C:\Users\jjstestal> schtasks /Query /TN "TFMTestTask" /V /FO LIST >C:\TFM_Triage\reports\fase4_S4_scheduled_task_query.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Carpeta: \"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Nombre de host:                                        LABWIN"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Nombre de tarea:                                       \TFMTestTask"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Hora próxima ejecución:                                01/07/2026 23:59:00"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Estado:                                                Listo"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Modo de inicio de sesión:                              Solo interactivo"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Último tiempo de ejecución:                            30/11/1999 0:00:00"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Último resultado:                                      267011"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Autor:                                                 labwin\jjstestal"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Tarea que se ejecutará:                                notepad.exe "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Iniciar en:                                            N/A"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Comentario:                                            N/A"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Estado de tarea programada:                            Habilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Tiempo de inactividad:                                 Deshabilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Administración de energía:                             Detener en modo Batería, No iniciar en Batería"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Ejecutar como usuario:                                 jjstestal"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eliminar tarea si no se vuelve a programar:            Deshabilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eliminar tarea si ejecuta durante X horas y X minutos: 72:00:00"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Programación:                                          Datos de programación no disponibles en este formato."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Tipo de programación:                                  Solo una vez"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Hora de inicio:                                        23:59:00"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Fecha de inicio:                                       01/07/2026"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Fecha final:                                           N/A"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Días:                                                  N/A"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Meses:                                                 N/A"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Repetir: cada:                                         Deshabilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Repetir: hasta: hora:                                  Deshabilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Repetir: hasta: duración:                              Deshabilitado"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Repetir: detener si aún se ejecuta:                    Deshabilitado"
+PS C:\Users\jjstestal> Start-Sleep -Seconds 2
+PS C:\Users\jjstestal> schtasks /Delete /TN "TFMTestTask" /F
+
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S4,suspicious_simulated,Creación de tarea programada benigna,$start,$end,schtasks.exe,Tarea TFMTestTask creada y eliminada" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S4 - Tarea programada benigna
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación de tarea programada TFMTestTask.
+- Consulta de la tarea.
+- Eliminación de la tarea.
+
+Interés forense:
+La creación de tareas programadas es relevante en análisis de persistencia y automatización de ejecución. Aquí se simula con una acción inocua.
+
+Naturaleza:
+Simulación benigna y reversible.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S4_scheduled_task.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> sc.exe create TFMTestService binPath= "C:\Windows\System32\cmd.exe /c echo TFMTestService" start= demand
+
+PS C:\Users\jjstestal> sc.exe query TFMTestService >C:\TFM_Triage\reports\fase4_S5_service_query.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="NOMBRE_DE_SERVICIO: TFMTestService "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        TIPO                         : 10  WIN32_OWN_PROCESS  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ESTADO                       : 1  STOPPED "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        CÓDIGO_DE_SALIDA_DE_WIN32    : 1077  (0x435)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        CÓDIGO_DE_SALIDA_DEL_SERVICIO: 0  (0x0)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        PUNTO_DE_CONTROL             : 0x0"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ESPERA                       : 0x0"
+PS C:\Users\jjstestal> Start-Sleep -Seconds 2
+PS C:\Users\jjstestal> sc.exe delete TFMTestService
+
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S5,suspicious_simulated,Creación de servicio de prueba,$start,$end,sc.exe,Servicio TFMTestService creado y eliminado" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S5 - Creación de servicio de prueba
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación del servicio TFMTestService.
+- Consulta del servicio.
+- Eliminación del servicio.
+
+Interés forense:
+La creación de servicios es un artefacto relevante en investigaciones Windows, especialmente por su relación con persistencia y ejecución con privilegios. En este caso se crea un servicio de prueba, no malicioso, y se elimina inmediatamente.
+
+Naturaleza:
+Simulación benigna y reversible.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S5_service_creation.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> $startup = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
+PS C:\Users\jjstestal> $startupFile = Join-Path $startup "tfm_startup_test.bat"
+PS C:\Users\jjstestal> 'echo TFM startup test benigno' | Out-File $startupFile -Encoding ASCII
+PS C:\Users\jjstestal> Get-Item $startupFile |
+Format-List * |
+Out-File C:\TFM_Triage\reports\fase4_S6_startup_file_info.txt
+PS C:\Users\jjstestal> Start-Sleep -Seconds 2
+PS C:\Users\jjstestal> Remove-Item $startupFile -Force
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S6,suspicious_simulated,Creación de fichero benigno en carpeta Startup,$start,$end,powershell.exe,tfm_startup_test.bat creado y eliminado" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S6 - Fichero en carpeta Startup
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Creación de fichero bat benigno en la carpeta Startup del usuario.
+- Consulta del fichero.
+- Eliminación del fichero.
+
+Interés forense:
+La carpeta Startup puede utilizarse para ejecución automática al inicio de sesión. En este laboratorio se simula de forma benigna y controlada.
+
+Naturaleza:
+Simulación benigna y reversible.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S6_startup_folder.txt
+PS C:\Users\jjstestal> $start = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> Test-NetConnection www.example.com -Port 80 |
+Out-File C:\TFM_Triage\reports\fase4_S7_test_example_80.txt
+PS C:\Users\jjstestal> Resolve-DnsName www.example.com |
+Out-File C:\TFM_Triage\reports\fase4_S7_dns_example.txt
+PS C:\Users\jjstestal> $end = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+PS C:\Users\jjstestal> "S7,suspicious_simulated,Conexión de red desde PowerShell,$start,$end,powershell.exe,Conexión HTTP y DNS a www.example.com" |
+Add-Content C:\TFM_Triage\reports\fase4_scenarios_timestamps.csv
+PS C:\Users\jjstestal> @"
+Escenario S7 - Conexión de red desde PowerShell
+
+Inicio: $start
+Fin: $end
+
+Acciones:
+- Test-NetConnection contra www.example.com:80.
+- Resolución DNS de www.example.com.
+
+Interés forense:
+Las conexiones de red desde intérpretes como PowerShell pueden requerir revisión durante el triage, especialmente si aparecen combinadas con otros indicadores como comandos codificados, rutas temporales o persistencia.
+
+Naturaleza:
+Simulación benigna.
+"@ | Out-File C:\TFM_Triage\reports\fase4_S7_network_powershell.txt
+PS C:\Users\jjstestal> Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff" |
+Out-File C:\TFM_Triage\reports\fase4_end.txt
+PS C:\Users\jjstestal> Start-Sleep -Seconds 30
+PS C:\Users\jjstestal> Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational |
+Measure-Object |
+Out-File C:\TFM_Triage\reports\count_sysmon_fase4.txt
+PS C:\Users\jjstestal> Get-WinEvent -LogName Microsoft-Windows-PowerShell/Operational |
+Measure-Object |
+Out-File C:\TFM_Triage\reports\count_powershell_fase4.txt
+PS C:\Users\jjstestal> Get-WinEvent -LogName Security |
+Measure-Object |
+Out-File C:\TFM_Triage\reports\count_security_fase4.txt
+PS C:\Users\jjstestal> Get-WinEvent -LogName System |
+Measure-Object |
+Out-File C:\TFM_Triage\reports\count_system_fase4.txt
+PS C:\Users\jjstestal> Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -MaxEvents 120 |
+Select-Object TimeCreated, Id, ProviderName, MachineName, Message |
+Format-List |
+Out-File C:\TFM_Triage\reports\sample_sysmon_events_fase4.txt -Encoding UTF8
+PS C:\Users\jjstestal> Get-WinEvent -LogName Microsoft-Windows-PowerShell/Operational -MaxEvents 80 |
+Select-Object TimeCreated, Id, ProviderName, MachineName, Message |
+Format-List |
+Out-File C:\TFM_Triage\reports\sample_powershell_events_fase4.txt -Encoding UTF8
+PS C:\Users\jjstestal> Get-WinEvent -LogName Security -MaxEvents 80 |
+Select-Object TimeCreated, Id, ProviderName, MachineName, Message |
+Format-List |
+Out-File C:\TFM_Triage\reports\sample_security_events_fase4.txt -Encoding UTF8
+PS C:\Users\jjstestal> wevtutil epl Microsoft-Windows-Sysmon/Operational C:\TFM_Triage\raw\fase4_sysmon_sospechosa.evtx
+
+PS C:\Users\jjstestal> wevtutil epl Microsoft-Windows-PowerShell/Operational C:\TFM_Triage\raw\fase4_powershell_sospechosa.evtx
+
+PS C:\Users\jjstestal> wevtutil epl Security C:\TFM_Triage\raw\fase4_security_sospechosa.evtx
+
+PS C:\Users\jjstestal> wevtutil epl System C:\TFM_Triage\raw\fase4_system_sospechosa.evtx
+
+PS C:\Users\jjstestal> Get-FileHash C:\TFM_Triage\raw\fase4_sysmon_sospechosa.evtx -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_fase4_sysmon_sospechosa.evtx.txt
+PS C:\Users\jjstestal> Get-FileHash C:\TFM_Triage\raw\fase4_powershell_sospechosa.evtx -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_fase4_powershell_sospechosa.evtx.txt
+PS C:\Users\jjstestal> Get-FileHash C:\TFM_Triage\raw\fase4_security_sospechosa.evtx -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_fase4_security_sospechosa.evtx.txt
+PS C:\Users\jjstestal> Get-FileHash C:\TFM_Triage\raw\fase4_system_sospechosa.evtx -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hash_fase4_system_sospechosa.evtx.txt
+PS C:\Users\jjstestal> Get-ChildItem C:\TFM_Triage -Recurse |
+Select-Object FullName, Length, LastWriteTime |
+Out-File C:\TFM_Triage\reports\listado_archivos_fase4.txt
+PS C:\Users\jjstestal> Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260701094539
+**********************

@@ -1,0 +1,2331 @@
+﻿
+
+TimeCreated  : 01/07/2026 9:44:12
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:09.339
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54316
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:44:12
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:09.735
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 15.133.209.48.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:44:11
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:08.316
+               ProcessGuid: {55857b6a-c547-6a44-a201-000000000c00}
+               ProcessId: 9500
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64047
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.133.15
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:44:11
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.388
+               ProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ProcessId: 9500
+               Image: <unknown process>
+               User: -
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64045
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.133.15
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:44:10
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:08.020
+               ProcessGuid: {55857b6a-c547-6a44-a201-000000000c00}
+               ProcessId: 9500
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64046
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.133.15
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:44:10
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.726
+               ProcessGuid: {55857b6a-c547-6a44-a201-000000000c00}
+               ProcessId: 9500
+               QueryName: settings-win.data.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 atm-settingsfe-prod-geo2.trafficmanager.net;type: 5 
+               settings-prod-neu-1-tagged.northeurope.cloudapp.azure.com;::ffff:48.209.133.15;
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:44:09
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:09.443
+               ProcessGuid: {55857b6a-c547-6a44-a201-000000000c00}
+               ProcessId: 9500
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:44:09
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.325
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54284
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:44:09
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.316
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: false
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54316
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:44:09
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.289
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54316
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:44:07
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.867
+               ProcessGuid: {55857b6a-c547-6a44-a301-000000000c00}
+               ProcessId: 14848
+               Image: C:\Windows\System32\sppsvc.exe
+               FileVersion: 10.0.26100.8655 (WinBuild.160101.0800)
+               Description: Microsoft Software Protection Platform Service
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sppsvc.exe
+               CommandLine: C:\WINDOWS\system32\sppsvc.exe
+               CurrentDirectory: C:\WINDOWS
+               User: NT AUTHORITY\Servicio de red
+               LogonGuid: {55857b6a-c0f5-6a44-e403-000000000000}
+               LogonId: 0x3E4
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=DBC0A6FC05209FF05B60C1D127E7897555A3B314B448936D951A28244FC337B6,IMPHAS
+               H=6A1CC13E54D1F32DE46043FCDF341B9B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:44:07
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.544
+               ProcessGuid: {55857b6a-c47a-6a44-9401-000000000c00}
+               ProcessId: 14820
+               Image: C:\Windows\System32\backgroundTaskHost.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:44:07
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.434
+               ProcessGuid: {55857b6a-c547-6a44-a201-000000000c00}
+               ProcessId: 9500
+               Image: C:\Windows\System32\taskhostw.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: Host Process for Windows Tasks
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: taskhostw.exe
+               CommandLine: taskhostw.exe
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=EA8D441DF237FB3D3B7A27A95FDE186E19C94D58A618F5C29ED5FC13CB155E96,IMPHAS
+               H=2196268E7A2880E3ADC74481297D0C4B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:44:07
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:07.021
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\count_system_fase4.txt
+               CreationUtcTime: 2026-07-01 07:44:07.021
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:44:00
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:44:00.137
+               ProcessGuid: {55857b6a-c3a3-6a44-7e01-000000000c00}
+               ProcessId: 11224
+               Image: C:\Windows\System32\SearchProtocolHost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:43:49
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:49.147
+               ProcessGuid: {55857b6a-c3a3-6a44-8001-000000000c00}
+               ProcessId: 1524
+               Image: C:\Windows\System32\SearchFilterHost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:43:49
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:49.143
+               ProcessGuid: {55857b6a-c3a3-6a44-7f01-000000000c00}
+               ProcessId: 10716
+               Image: C:\Windows\System32\SearchFilterHost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:43:37
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:37.879
+               ProcessGuid: {55857b6a-c101-6a44-a500-000000000c00}
+               ProcessId: 8656
+               Image: C:\Windows\System32\smartscreen.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:43:28
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:28.845
+               ProcessGuid: {55857b6a-c47d-6a44-9801-000000000c00}
+               ProcessId: 12480
+               Image: C:\Windows\System32\wbem\WmiPrvSE.exe
+               User: NT AUTHORITY\Servicio de red
+
+TimeCreated  : 01/07/2026 9:43:28
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:28.845
+               ProcessGuid: {55857b6a-c4c8-6a44-a001-000000000c00}
+               ProcessId: 14116
+               Image: C:\Windows\System32\wbem\WmiPrvSE.exe
+               User: NT AUTHORITY\SERVICIO LOCAL
+
+TimeCreated  : 01/07/2026 9:43:19
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:16.601
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 225.162.46.104.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:43:17
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:13.486
+               ProcessGuid: {55857b6a-c0f6-6a44-3e00-000000000c00}
+               ProcessId: 3324
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64044
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 104.46.162.225
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:43:17
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:13.218
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 61343
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:43:16
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:13.618
+               ProcessGuid: {55857b6a-c0f6-6a44-3e00-000000000c00}
+               ProcessId: 3324
+               QueryName: v10.events.data.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 win-global-asimov-leafs-events-data.trafficmanager.net;type: 5 
+               onedscolprdgwc03.germanywestcentral.cloudapp.azure.com;::ffff:104.46.162.225;
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:43:11
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:11.748
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\count_security_fase4.txt
+               CreationUtcTime: 2026-07-01 07:43:11.748
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:43:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:05.598
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\count_powershell_fase4.txt
+               CreationUtcTime: 2026-07-01 07:43:05.596
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:43:03
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:43:03.601
+               ProcessGuid: {55857b6a-c4c8-6a44-a101-000000000c00}
+               ProcessId: 4000
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:42:59
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:59.416
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\count_sysmon_fase4.txt
+               CreationUtcTime: 2026-07-01 07:42:59.416
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:47
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:47.702
+               ProcessGuid: {55857b6a-c47e-6a44-9c01-000000000c00}
+               ProcessId: 4240
+               Image: C:\Windows\servicing\TrustedInstaller.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:42:47
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:47.698
+               ProcessGuid: {55857b6a-c47e-6a44-9d01-000000000c00}
+               ProcessId: 12932
+               Image: C:\Windows\WinSxS\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.
+               26100.8648_none_a50ef8e3775e8e5e\TiWorker.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:42:35
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:35.843
+               ProcessGuid: {55857b6a-c35c-6a44-7201-000000000c00}
+               ProcessId: 4068
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:42:13
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:13.797
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_end.txt
+               CreationUtcTime: 2026-07-01 07:42:13.797
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:04
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:04.102
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S7_network_powershell.txt
+               CreationUtcTime: 2026-07-01 07:42:04.101
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:02
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:59.388
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 154.23.20.104.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:42:01
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:58.105
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               QueryName: www.example.com
+               QueryStatus: 0
+               QueryResults: 2606:4700:10::ac42:93f3;2606:4700:10::6814:179a;::ffff:172.66.147.243;::
+               ffff:104.20.23.154;
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:01
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:58.103
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               QueryName: www.example.com
+               QueryStatus: 1460
+               QueryResults: -
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:00
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:00.805
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S7_dns_example.txt
+               CreationUtcTime: 2026-07-01 07:42:00.805
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:00
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:00.658
+               ProcessGuid: {55857b6a-c4c8-6a44-a101-000000000c00}
+               ProcessId: 4000
+               Image: C:\Windows\System32\svchost.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Host Process for Windows Services
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: svchost.exe
+               CommandLine: C:\WINDOWS\System32\svchost.exe -k netsvcs -p -s NetSetupSvc
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=2178F1915F740CCE64040107CD489E9E1FF828A7EA29CD706BC46BA0FBAA69C4,IMPHAS
+               H=DE43BD45CC98C143357416C7519ECCFD
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:42:00
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:42:00.581
+               ProcessGuid: {55857b6a-c4c8-6a44-a001-000000000c00}
+               ProcessId: 14116
+               Image: C:\Windows\System32\wbem\WmiPrvSE.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: WMI Provider Host
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: Wmiprvse.exe
+               CommandLine: C:\WINDOWS\system32\wbem\wmiprvse.exe -secured -Embedding
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SERVICIO LOCAL
+               LogonGuid: {55857b6a-c0f5-6a44-e503-000000000000}
+               LogonId: 0x3E5
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=6A94D40BF022871C2C91EF67B60CCF42814447FC6090C96509A8EE94A11C5212,IMPHAS
+               H=9B12E09D30AA8E8200298E4737C9F1FC
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:42:00
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:58.085
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               QueryName: www.example.com
+               QueryStatus: 0
+               QueryResults: 2606:4700:10::6814:179a;2606:4700:10::ac42:93f3;::ffff:172.66.147.243;::
+               ffff:104.20.23.154;
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:42:00
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:57.786
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               QueryName: www.example.com
+               QueryStatus: 0
+               QueryResults: 2606:4700:10::6814:179a;2606:4700:10::ac42:93f3;::ffff:104.20.23.154;::f
+               fff:172.66.147.243;
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:59
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:57.692
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 61343
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:41:59
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:57.444
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+               User: labwin\jjstestal
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64043
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 104.20.23.154
+               DestinationHostname: -
+               DestinationPort: 80
+               DestinationPortName: http
+
+TimeCreated  : 01/07/2026 9:41:58
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:55.929
+               ProcessGuid: {55857b6a-c0f6-6a44-4200-000000000c00}
+               ProcessId: 3420
+               Image: C:\ProgramData\Microsoft\Windows 
+               Defender\Platform\4.18.26050.15-0\MpDefenderCoreService.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64042
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 52.123.131.14
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:41:58
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:58.250
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S7_test_example_80.txt
+               CreationUtcTime: 2026-07-01 07:41:58.250
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:49
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:49.552
+               ProcessGuid: {55857b6a-c47a-6a44-9201-000000000c00}
+               ProcessId: 13468
+               Image: C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:41:45
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:45.628
+               ProcessGuid: {55857b6a-c47a-6a44-9301-000000000c00}
+               ProcessId: 12624
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:41:40
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:40.180
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S6_startup_folder.txt
+               CreationUtcTime: 2026-07-01 07:41:40.180
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:35
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:35.473
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S6_startup_file_info.txt
+               CreationUtcTime: 2026-07-01 07:41:35.472
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:35
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:35.449
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Start 
+               Menu\Programs\Startup\tfm_startup_test.bat
+               CreationUtcTime: 2026-07-01 07:41:35.449
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:26
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:26.395
+               ProcessGuid: {55857b6a-c2c6-6a44-5101-000000000c00}
+               ProcessId: 9988
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SERVICIO LOCAL
+
+TimeCreated  : 01/07/2026 9:41:17
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:17.608
+               ProcessGuid: {55857b6a-c47d-6a44-9b01-000000000c00}
+               ProcessId: 12432
+               Image: C:\Windows\System32\sppsvc.exe
+               User: NT AUTHORITY\Servicio de red
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.821
+               ProcessGuid: {55857b6a-c488-6a44-9f01-000000000c00}
+               ProcessId: 14040
+               Image: C:\Windows\System32\PickerHost.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.817
+               ProcessGuid: {55857b6a-c412-6a44-8b01-000000000c00}
+               ProcessId: 3068
+               Image: C:\Program Files\WindowsApps\Microsoft.ScreenSketch_11.2510.31.0_x64__8wekyb3d8
+               bbwe\SnippingTool\SnippingTool.exe
+               TargetFilename: C:\TFM_Triage\screenshots\fase4_servicio_prueba.png
+               CreationUtcTime: 2026-07-01 07:41:05.772
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.812
+               ProcessGuid: {55857b6a-c488-6a44-9f01-000000000c00}
+               ProcessId: 14040
+               Image: C:\Windows\System32\PickerHost.exe
+               TargetFilename: C:\TFM_Triage\screenshots\fase4_servicio_prueba.png
+               CreationUtcTime: 2026-07-01 07:41:05.772
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.799
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: 
+               C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\screenshots.lnk
+               CreationUtcTime: 2026-06-30 10:52:59.323
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.791
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: 
+               C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\fase4_servicio_prueba.lnk
+               CreationUtcTime: 2026-07-01 07:41:05.791
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:41:05
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:41:05.772
+               ProcessGuid: {55857b6a-c488-6a44-9f01-000000000c00}
+               ProcessId: 14040
+               Image: C:\Windows\System32\PickerHost.exe
+               TargetFilename: C:\TFM_Triage\screenshots\fase4_servicio_prueba.png
+               CreationUtcTime: 2026-07-01 07:41:05.772
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:56
+Id           : 7
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Image loaded:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:56.286
+               ProcessGuid: {55857b6a-c488-6a44-9f01-000000000c00}
+               ProcessId: 14040
+               Image: C:\Windows\System32\PickerHost.exe
+               ImageLoaded: C:\Users\jjstestal\AppData\Local\Microsoft\OneDrive\26.106.0603.0003\File
+               SyncShell64.dll
+               FileVersion: 26.106.0603.0003
+               Description: Microsoft OneDrive Shell Extension
+               Product: Microsoft OneDrive
+               Company: Microsoft Corporation
+               OriginalFileName: FileSyncShell64.dll
+               Hashes: SHA256=FAA25B7F64432B486D64C35100219205F1B539D5EAFB9C8BB420D31CD5B78885,IMPHAS
+               H=5231548F3E2EC418E4008247EAC6213F
+               Signed: true
+               Signature: Microsoft Corporation
+               SignatureStatus: Valid
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:56
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:56.088
+               ProcessGuid: {55857b6a-c488-6a44-9f01-000000000c00}
+               ProcessId: 14040
+               Image: C:\Windows\System32\PickerHost.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: File Picker UI Host
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: PickerHost.exe
+               CommandLine: C:\Windows\System32\PickerHost.exe -Embedding
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-b504-060000000000}
+               LogonId: 0x604B5
+               TerminalSessionId: 1
+               IntegrityLevel: Medium
+               Hashes: SHA256=5C864036D7B180C70CDAEB75E932119369838DC694EC025AFDAAAEF4FB0BADB6,IMPHAS
+               H=A29C838752203A952CED99FCD67FC0FE
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:53
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:50.237
+               ProcessGuid: {55857b6a-c0f6-6a44-3e00-000000000c00}
+               ProcessId: 3324
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64041
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 20.42.65.91
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:52
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:49.671
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 91.65.42.20.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:52
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:49.671
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 135.95.233.135.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:47.813
+               ProcessGuid: {55857b6a-c0f6-6a44-3e00-000000000c00}
+               ProcessId: 3324
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64040
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 20.42.65.91
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:47.684
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 61343
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:47.262
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 60819
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:46.925
+               ProcessGuid: {55857b6a-c111-6a44-d900-000000000c00}
+               ProcessId: 14124
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64039
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 135.233.95.135
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:48.110
+               ProcessGuid: {55857b6a-c0f6-6a44-3e00-000000000c00}
+               ProcessId: 3324
+               QueryName: v10.events.data.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 win-global-asimov-leafs-events-data.trafficmanager.net;type: 5 
+               onedscolprdeus17.eastus.cloudapp.azure.com;::ffff:20.42.65.91;
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:47.657
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 211.128.18.135.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:50
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:47.177
+               ProcessGuid: {55857b6a-c111-6a44-d900-000000000c00}
+               ProcessId: 14124
+               QueryName: tas02.cws.update.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 glb.tas02.cws-prod.dcat.dsp.mp.microsoft.com;type: 5 
+               glb.cws.prod.dcat.dsp.trafficmanager.net;2603:1030:10:12::2fe;::ffff:135.233.95.135;
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:49
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.718
+               ProcessGuid: {55857b6a-c47a-6a44-9201-000000000c00}
+               ProcessId: 13468
+               Image: C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64038
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.138.168
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:48.562
+               ProcessGuid: {55857b6a-c480-6a44-9e01-000000000c00}
+               ProcessId: 5660
+               Image: C:\Windows\System32\svchost.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:48.481
+               ProcessGuid: {55857b6a-c480-6a44-9e01-000000000c00}
+               ProcessId: 5660
+               Image: C:\Windows\System32\svchost.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Host Process for Windows Services
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: svchost.exe
+               CommandLine: C:\WINDOWS\system32\svchost.exe -k LocalService -p -s CaptureService
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-b504-060000000000}
+               LogonId: 0x604B5
+               TerminalSessionId: 1
+               IntegrityLevel: Medium
+               Hashes: SHA256=2178F1915F740CCE64040107CD489E9E1FF828A7EA29CD706BC46BA0FBAA69C4,IMPHAS
+               H=DE43BD45CC98C143357416C7519ECCFD
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.416
+               ProcessGuid: {55857b6a-c111-6a44-d900-000000000c00}
+               ProcessId: 14124
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64037
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 135.18.128.211
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.312
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: false
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54284
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.312
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: false
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 60819
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.272
+               ProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ProcessId: 14608
+               Image: <unknown process>
+               User: -
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64035
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.138.168
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.272
+               ProcessGuid: {55857b6a-c47a-6a44-9201-000000000c00}
+               ProcessId: 13468
+               Image: C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64036
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.138.168
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.209
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 54284
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.705
+               ProcessGuid: {55857b6a-c111-6a44-d900-000000000c00}
+               ProcessId: 14124
+               QueryName: fe2cr.update.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 fe2cr.update.msft.com.trafficmanager.net;2603:1030:608:c::372;26
+               03:1030:608:c::371;::ffff:135.18.128.211;::ffff:134.33.4.16;
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.621
+               ProcessGuid: {55857b6a-c47d-6a44-9a01-000000000c00}
+               ProcessId: 14608
+               QueryName: settings-win.data.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 atm-settingsfe-prod-geo2.trafficmanager.net;type: 5 
+               settings-prod-neu-3-tagged.northeurope.cloudapp.azure.com;::ffff:48.209.138.168;
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:48
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.621
+               ProcessGuid: {55857b6a-c47a-6a44-9201-000000000c00}
+               ProcessId: 13468
+               QueryName: settings-win.data.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 atm-settingsfe-prod-geo2.trafficmanager.net;type: 5 
+               settings-prod-neu-3-tagged.northeurope.cloudapp.azure.com;::ffff:48.209.138.168;
+               Image: C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:46
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:46.486
+               ProcessGuid: {55857b6a-c3fc-6a44-8701-000000000c00}
+               ProcessId: 10320
+               Image: C:\Program Files\Sublime Text\sublime_text.exe
+               TargetFilename: C:\Users\jjstestal\AppData\Roaming\Sublime Text\Local\Auto Save Temp 
+               Session.sublime_session.tmp
+               CreationUtcTime: 2026-07-01 07:40:46.486
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:46
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:46.423
+               ProcessGuid: {55857b6a-c47d-6a44-9a01-000000000c00}
+               ProcessId: 14608
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:46
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:46.072
+               ProcessGuid: {55857b6a-c47e-6a44-9d01-000000000c00}
+               ProcessId: 12932
+               Image: C:\Windows\WinSxS\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.
+               26100.8648_none_a50ef8e3775e8e5e\TiWorker.exe
+               FileVersion: 10.0.26100.8648 (WinBuild.160101.0800)
+               Description: Windows Modules Installer Worker
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: TiWorker.exe
+               CommandLine: C:\WINDOWS\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35
+               _10.0.26100.8648_none_a50ef8e3775e8e5e\TiWorker.exe -Embedding
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=664DE9C1B24F96F8ED4DF7B73A670FF088CC24409C69CEB21C38CB80252CC705,IMPHAS
+               H=C9E6F57BC9D443E5C445B53A709EE1DB
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:46
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:46.054
+               ProcessGuid: {55857b6a-c47e-6a44-9c01-000000000c00}
+               ProcessId: 4240
+               Image: C:\Windows\servicing\TrustedInstaller.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Windows Modules Installer
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: TrustedInstaller.exe
+               CommandLine: C:\WINDOWS\servicing\TrustedInstaller.exe
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=37035861513074930B667817EA65B6FE88FDCC8289C3AB6A748625560F77E5AD,IMPHAS
+               H=22DCF939E2A1BE6753041D36402498AC
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.734
+               ProcessGuid: {55857b6a-c47d-6a44-9b01-000000000c00}
+               ProcessId: 12432
+               Image: C:\Windows\System32\sppsvc.exe
+               FileVersion: 10.0.26100.8655 (WinBuild.160101.0800)
+               Description: Microsoft Software Protection Platform Service
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: sppsvc.exe
+               CommandLine: C:\WINDOWS\system32\sppsvc.exe
+               CurrentDirectory: C:\WINDOWS
+               User: NT AUTHORITY\Servicio de red
+               LogonGuid: {55857b6a-c0f5-6a44-e403-000000000000}
+               LogonId: 0x3E4
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=DBC0A6FC05209FF05B60C1D127E7897555A3B314B448936D951A28244FC337B6,IMPHAS
+               H=6A1CC13E54D1F32DE46043FCDF341B9B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:43.479
+               ProcessGuid: {55857b6a-c0f6-6a44-4200-000000000c00}
+               ProcessId: 3420
+               Image: C:\ProgramData\Microsoft\Windows 
+               Defender\Platform\4.18.26050.15-0\MpDefenderCoreService.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64034
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 52.123.131.14
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.570
+               ProcessGuid: {55857b6a-c47d-6a44-9a01-000000000c00}
+               ProcessId: 14608
+               Image: C:\Windows\System32\taskhostw.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: Host Process for Windows Tasks
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: taskhostw.exe
+               CommandLine: taskhostw.exe
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=EA8D441DF237FB3D3B7A27A95FDE186E19C94D58A618F5C29ED5FC13CB155E96,IMPHAS
+               H=2196268E7A2880E3ADC74481297D0C4B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.415
+               ProcessGuid: {55857b6a-c47d-6a44-9901-000000000c00}
+               ProcessId: 656
+               Image: C:\Windows\System32\UsoClient.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.403
+               ProcessGuid: {55857b6a-c135-6a44-e600-000000000c00}
+               ProcessId: 15716
+               Image: C:\Windows\System32\taskhostw.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.400
+               ProcessGuid: {55857b6a-c47d-6a44-9901-000000000c00}
+               ProcessId: 656
+               Image: C:\Windows\System32\UsoClient.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: UsoClient
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: UsoClient
+               CommandLine: "C:\WINDOWS\system32\usoclient.exe" StartWork
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=D3C90744D4BB616C4946D9DC646E39E1FAD581366AA46F440B867C010B106612,IMPHAS
+               H=1BC6441172601AD7E84C0082681FF7D2
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.371
+               ProcessGuid: {55857b6a-c47d-6a44-9601-000000000c00}
+               ProcessId: 4196
+               Image: C:\Windows\System32\taskhostw.exe
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.206
+               ProcessGuid: {55857b6a-c47d-6a44-9801-000000000c00}
+               ProcessId: 12480
+               Image: C:\Windows\System32\wbem\WmiPrvSE.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: WMI Provider Host
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: Wmiprvse.exe
+               CommandLine: C:\WINDOWS\system32\wbem\wmiprvse.exe -secured -Embedding
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\Servicio de red
+               LogonGuid: {55857b6a-c0f5-6a44-e403-000000000000}
+               LogonId: 0x3E4
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=6A94D40BF022871C2C91EF67B60CCF42814447FC6090C96509A8EE94A11C5212,IMPHAS
+               H=9B12E09D30AA8E8200298E4737C9F1FC
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.135
+               ProcessGuid: {55857b6a-c47d-6a44-9701-000000000c00}
+               ProcessId: 4280
+               Image: C:\Windows\System32\taskhostw.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.117
+               ProcessGuid: {55857b6a-c47d-6a44-9701-000000000c00}
+               ProcessId: 4280
+               Image: C:\Windows\System32\taskhostw.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: Host Process for Windows Tasks
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: taskhostw.exe
+               CommandLine: taskhostw.exe -RegisterDevice -AccountChange
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=EA8D441DF237FB3D3B7A27A95FDE186E19C94D58A618F5C29ED5FC13CB155E96,IMPHAS
+               H=2196268E7A2880E3ADC74481297D0C4B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:45
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:45.098
+               ProcessGuid: {55857b6a-c47d-6a44-9601-000000000c00}
+               ProcessId: 4196
+               Image: C:\Windows\System32\taskhostw.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: Host Process for Windows Tasks
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: taskhostw.exe
+               CommandLine: taskhostw.exe -RegisterUserDevice -NewAccount
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-b504-060000000000}
+               LogonId: 0x604B5
+               TerminalSessionId: 1
+               IntegrityLevel: Medium
+               Hashes: SHA256=EA8D441DF237FB3D3B7A27A95FDE186E19C94D58A618F5C29ED5FC13CB155E96,IMPHAS
+               H=2196268E7A2880E3ADC74481297D0C4B
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.468
+               ProcessGuid: {55857b6a-c47a-6a44-9501-000000000c00}
+               ProcessId: 15280
+               Image: C:\Windows\System32\RuntimeBroker.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Runtime Broker
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: RuntimeBroker.exe
+               CommandLine: C:\Windows\System32\RuntimeBroker.exe -Embedding
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-b504-060000000000}
+               LogonId: 0x604B5
+               TerminalSessionId: 1
+               IntegrityLevel: Medium
+               Hashes: SHA256=FD5CC52C825DDBA302CF200CD2FDA3B303AC102D03BFE6F1F7A97B1E7B22E502,IMPHAS
+               H=DD3379331F906897D3533DB83F199654
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.425
+               ProcessGuid: {55857b6a-c47a-6a44-9401-000000000c00}
+               ProcessId: 14820
+               Image: C:\Windows\System32\backgroundTaskHost.exe
+               FileVersion: 10.0.26100.1 (WinBuild.160101.0800)
+               Description: Background Task Host
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: backgroundTaskHost.exe
+               CommandLine: "C:\WINDOWS\system32\BackgroundTaskHost.exe" 
+               -ServerName:BackgroundTaskHost.WebAccountProvider
+               CurrentDirectory: C:\Windows\SystemApps\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\
+               User: labwin\jjstestal
+               LogonGuid: {55857b6a-c0f8-6a44-b504-060000000000}
+               LogonId: 0x604B5
+               TerminalSessionId: 1
+               IntegrityLevel: AppContainer
+               Hashes: SHA256=B7D2C17E0038945AA4B72AE7A89E54D29B04CCC0FEB62DF5C9B7B67DE43C2530,IMPHAS
+               H=DC601E2593053A84A6989DE251407AA7
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 520
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 5
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process terminated:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.329
+               ProcessGuid: {55857b6a-c47a-6a44-9101-000000000c00}
+               ProcessId: 6956
+               Image: C:\Windows\System32\UsoClient.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.314
+               ProcessGuid: {55857b6a-c47a-6a44-9301-000000000c00}
+               ProcessId: 12624
+               Image: C:\Windows\System32\svchost.exe
+               FileVersion: 10.0.26100.8521 (WinBuild.160101.0800)
+               Description: Host Process for Windows Services
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: svchost.exe
+               CommandLine: C:\WINDOWS\system32\svchost.exe -k wusvcs -p -s WaaSMedicSvc
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=2178F1915F740CCE64040107CD489E9E1FF828A7EA29CD706BC46BA0FBAA69C4,IMPHAS
+               H=DE43BD45CC98C143357416C7519ECCFD
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 928
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.249
+               ProcessGuid: {55857b6a-c47a-6a44-9201-000000000c00}
+               ProcessId: 13468
+               Image: C:\Windows\UUS\amd64\MoUsoCoreWorker.exe
+               FileVersion: 1507.2605.13032.0
+               Description: MoUSO Core Worker Process
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: MoUSOCoreWorker.exe
+               CommandLine: "C:\WINDOWS\uus\AMD64\MoUsoCoreWorker.exe" useprivatenamespaces
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=6EDBCF322AD76F2DF9E2CB39C2EF5B35EED4E8869ADA6BCE1AC13AD0218A7BA6,IMPHAS
+               H=2380BE07383A8FFD0806D8375B4CABA6
+               ParentProcessGuid: {55857b6a-c171-6a44-0801-000000000c00}
+               ParentProcessId: 11592
+               ParentImage: C:\Windows\System32\svchost.exe
+               ParentCommandLine: C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s UsoSvc
+               ParentUser: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:40:42
+Id           : 1
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Process Create:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:42.215
+               ProcessGuid: {55857b6a-c47a-6a44-9101-000000000c00}
+               ProcessId: 6956
+               Image: C:\Windows\System32\UsoClient.exe
+               FileVersion: 10.0.26100.8328 (WinBuild.160101.0800)
+               Description: UsoClient
+               Product: Microsoft® Windows® Operating System
+               Company: Microsoft Corporation
+               OriginalFileName: UsoClient
+               CommandLine: "C:\WINDOWS\system32\usoclient.exe" StartWork
+               CurrentDirectory: C:\WINDOWS\system32\
+               User: NT AUTHORITY\SYSTEM
+               LogonGuid: {55857b6a-c0f4-6a44-e703-000000000000}
+               LogonId: 0x3E7
+               TerminalSessionId: 0
+               IntegrityLevel: System
+               Hashes: SHA256=D3C90744D4BB616C4946D9DC646E39E1FAD581366AA46F440B867C010B106612,IMPHAS
+               H=1BC6441172601AD7E84C0082681FF7D2
+               ParentProcessGuid: {00000000-0000-0000-0000-000000000000}
+               ParentProcessId: 1544
+               ParentImage: -
+               ParentCommandLine: -
+               ParentUser: -
+
+TimeCreated  : 01/07/2026 9:40:37
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:37.722
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: 
+               C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\reports.lnk
+               CreationUtcTime: 2026-06-30 10:50:23.354
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:37
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:37.720
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\fase4_S4_s
+               cheduled_task_query.lnk
+               CreationUtcTime: 2026-07-01 07:38:49.946
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:16
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:16.475
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: 
+               C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\reports.lnk
+               CreationUtcTime: 2026-06-30 10:50:23.354
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:16
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:16.466
+               ProcessGuid: {55857b6a-c0f8-6a44-7200-000000000c00}
+               ProcessId: 4596
+               Image: C:\WINDOWS\Explorer.EXE
+               TargetFilename: 
+               C:\Users\jjstestal\AppData\Roaming\Microsoft\Windows\Recent\fase4_S5_service_query.lnk
+               CreationUtcTime: 2026-07-01 07:40:16.466
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:13
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:13.446
+               ProcessGuid: {55857b6a-c0fb-6a44-8a00-000000000c00}
+               ProcessId: 7320
+               Image: C:\Program Files 
+               (x86)\Microsoft\EdgeWebView\Application\149.0.4022.98\msedgewebview2.exe
+               TargetFilename: C:\Users\jjstestal\AppData\Local\Packages\MicrosoftWindows.Client.CBS_
+               cw5n1h2txyewy\LocalState\EBWebView\Default\Network\b549aece-bb02-4bd7-825c-1f381824f16
+               a.tmp
+               CreationUtcTime: 2026-07-01 07:40:13.446
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:40:13
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:40:13.442
+               ProcessGuid: {55857b6a-c0fb-6a44-8a00-000000000c00}
+               ProcessId: 7320
+               Image: C:\Program Files 
+               (x86)\Microsoft\EdgeWebView\Application\149.0.4022.98\msedgewebview2.exe
+               TargetFilename: C:\Users\jjstestal\AppData\Local\Packages\MicrosoftWindows.Client.CBS_
+               cw5n1h2txyewy\LocalState\EBWebView\Default\Network\53483ac1-772f-4399-8701-53cd9e158e8
+               1.tmp
+               CreationUtcTime: 2026-07-01 07:40:13.442
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:58
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:55.062
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 60819
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:57
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:55.490
+               ProcessGuid: {55857b6a-c0f6-6a44-4400-000000000c00}
+               ProcessId: 3444
+               QueryName: 54.109.209.48.in-addr.arpa.
+               QueryStatus: 9003
+               QueryResults: -
+               Image: C:\Windows\Sysmon64.exe
+               User: NT AUTHORITY\SYSTEM
+
+TimeCreated  : 01/07/2026 9:39:57
+Id           : 11
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : File created:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:57.060
+               ProcessGuid: {55857b6a-c19b-6a44-2101-000000000c00}
+               ProcessId: 1708
+               Image: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+               TargetFilename: C:\TFM_Triage\reports\fase4_S5_service_creation.txt
+               CreationUtcTime: 2026-07-01 07:39:57.060
+               User: labwin\jjstestal
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.860
+               ProcessGuid: {55857b6a-c0f6-6a44-4600-000000000c00}
+               ProcessId: 3468
+               Image: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MsMpEng.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64033
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.109.54
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.152
+               ProcessGuid: {55857b6a-c0f6-6a44-4600-000000000c00}
+               ProcessId: 3468
+               Image: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MsMpEng.exe
+               User: NT AUTHORITY\SYSTEM
+               Protocol: tcp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64032
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 48.209.109.54
+               DestinationHostname: -
+               DestinationPort: 443
+               DestinationPortName: https
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.098
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: false
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 53800
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.083
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 53800
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.083
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64482
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.16.82
+               DestinationHostname: volantis.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.045
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 64482
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 3
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Network connection detected:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.045
+               ProcessGuid: {55857b6a-c0f5-6a44-2d00-000000000c00}
+               ProcessId: 2264
+               Image: C:\Windows\System32\svchost.exe
+               User: NT AUTHORITY\Servicio de red
+               Protocol: udp
+               Initiated: true
+               SourceIsIpv6: false
+               SourceIp: 10.0.2.15
+               SourceHostname: labwin.XCORP.almendralejo.es
+               SourcePort: 53800
+               SourcePortName: -
+               DestinationIsIpv6: false
+               DestinationIp: 10.100.15.20
+               DestinationHostname: astapor.corp.almendralejo.es
+               DestinationPort: 53
+               DestinationPortName: domain
+
+TimeCreated  : 01/07/2026 9:39:55
+Id           : 22
+ProviderName : Microsoft-Windows-Sysmon
+MachineName  : labwin
+Message      : Dns query:
+               RuleName: -
+               UtcTime: 2026-07-01 07:39:53.508
+               ProcessGuid: {55857b6a-c0f6-6a44-4600-000000000c00}
+               ProcessId: 3468
+               QueryName: wdcp.microsoft.com
+               QueryStatus: 0
+               QueryResults: type: 5 wd-prod-cp.trafficmanager.net;type: 5 
+               wd-prod-cp-eu-west-1-fe.westeurope.cloudapp.azure.com;::ffff:48.209.109.54;
+               Image: C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MsMpEng.exe
+               User: NT AUTHORITY\SYSTEM
+
+
+

@@ -1,0 +1,54 @@
+{
+  "total_processes": 176,
+  "processes_by_label": {
+    "background": 121,
+    "normal": 41,
+    "suspicious_simulated": 14
+  },
+  "processes_by_phase": {
+    "fase4_suspicious_simulated": 135,
+    "fase3_normal": 41
+  },
+  "processes_by_scenario": {
+    "": 91,
+    "S2": 37,
+    "N3": 11,
+    "N1": 6,
+    "S3": 5,
+    "N5": 4,
+    "N4": 4,
+    "S5": 4,
+    "S7": 3,
+    "S4": 3,
+    "S1;S2": 1,
+    "S1": 1,
+    "S1;S2;S3;S4;S5;S6;S7": 1,
+    "S2;S5;S7": 1,
+    "S2;S3;S5;S7": 1,
+    "S2;S3": 1,
+    "N1;N2;N3;N4;N5": 1,
+    "N1;N2": 1
+  },
+  "top_process_names": {
+    "svchost.exe": 34,
+    "taskhostw.exe": 11,
+    "wmiprvse.exe": 8,
+    "powershell.exe": 7,
+    "reg.exe": 5,
+    "pickerhost.exe": 4,
+    "sppsvc.exe": 4,
+    "schtasks.exe": 4,
+    "searchfilterhost.exe": 4,
+    "sc.exe": 4,
+    "cmd.exe": 4,
+    "snippingtool.exe": 3,
+    "runtimebroker.exe": 3,
+    "conhost.exe": 3,
+    "firefox.exe": 3,
+    "msedgewebview2.exe": 3,
+    "wevtutil.exe": 3,
+    "explorer.exe": 3,
+    "notepad.exe": 2,
+    "securityhealthhost.exe": 2
+  }
+}

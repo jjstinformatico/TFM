@@ -1,0 +1,682 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260701103813
+Nombre de usuario: labwin\jjstestal
+Usuario RunAs: labwin\jjstestal
+Nombre de la configuración: 
+Máquina: LABWIN (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 2656
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\TFM_Triage\reports\transcript_laboratorio_fase5.txt
+PS C:\Users\jjstestal> Write-Output "FASE 5 - Conversión de EVTX a dataset normalizado"
+FASE 5 - Conversión de EVTX a dataset normalizado
+PS C:\Users\jjstestal> Write-Output "Fecha y hora de inicio de Fase 4:"
+Fecha y hora de inicio de Fase 4:
+PS C:\Users\jjstestal> Get-Date
+
+miércoles, 1 de julio de 2026 10:39:43
+
+
+PS C:\Users\jjstestal> Write-Output "Usuario actual:"
+Usuario actual:
+PS C:\Users\jjstestal> whoami
+labwin\jjstestal
+PS C:\Users\jjstestal> Write-Output "Equipo actual:"
+Equipo actual:
+PS C:\Users\jjstestal> hostname
+labwin
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\src
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026     10:29                src
+
+
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\processed
+
+
+    Directorio: C:\TFM_Triage
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026     10:29                processed
+
+
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\processed\fase3
+
+
+    Directorio: C:\TFM_Triage\processed
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026     10:29                fase3
+
+
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\processed\fase4
+
+
+    Directorio: C:\TFM_Triage\processed
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026     10:29                fase4
+
+
+PS C:\Users\jjstestal> New-Item -ItemType Directory -Force -Path C:\TFM_Triage\processed\combined
+
+
+    Directorio: C:\TFM_Triage\processed
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        01/07/2026     10:29                combined
+
+
+PS C:\Users\jjstestal> python --version
+
+PS C:\Users\jjstestal> python --version > C:\TFM_Triage\reports\python_version_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Python 3.14.6"
+PS C:\Users\jjstestal> pip --version > C:\TFM_Triage\reports\pip_version_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="pip 26.1.2 from C:\Users\jjstestal\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pip (python 3.14)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+PS C:\Users\jjstestal> cd C:\TFM_Triage
+PS C:\TFM_Triage> python -m venv .venv
+
+PS C:\TFM_Triage> C:\TFM_Triage\.venv\Scripts\Activate.ps1
+C:\TFM_Triage\.venv\Scripts\Activate.ps1 : No se puede cargar el archivo C:\TFM_Triage\.venv\Scripts\Activate.ps1 
+porque la ejecución de scripts está deshabilitada en este sistema. Para obtener más información, consulta el tema 
+about_Execution_Policies en https:/go.microsoft.com/fwlink/?LinkID=135170.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\.venv\Scripts\Activate.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+C:\TFM_Triage\.venv\Scripts\Activate.ps1 : No se puede cargar el archivo
+C:\TFM_Triage\.venv\Scripts\Activate.ps1 porque la ejecución de scripts está deshabilitada en este
+sistema. Para obtener más información, consulta el tema about_Execution_Policies en
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+En línea: 1 Carácter: 1
++ C:\TFM_Triage\.venv\Scripts\Activate.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+PS C:\TFM_Triage> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+PS C:\TFM_Triage> C:\TFM_Triage\.venv\Scripts\Activate.ps1
+PS C:\TFM_Triage>
+(.venv) pip install -r C:\TFM_Triage\requirements.txt > C:\TFM_Triage\reports\pip_install_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-evtx==0.8.1 (from -r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading python_evtx-0.8.1-py3-none-any.whl.metadata (6.0 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pandas==2.2.2 (from -r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading pandas-2.2.2.tar.gz (4.4 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="     ---------------------------------------- 4.4/4.4 MB 10.5 MB/s  0:00:00"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing backend dependencies: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing backend dependencies: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): finished with status 'error'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  error: subprocess-exited-with-error"
+(.venv) EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml) did not run successfully."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  exit code: 1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  [12 lines of output]"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  + meson setup C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390 C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390\.mesonpy-slwcwy0d\build -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --vsenv --native-file=C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390\.mesonpy-slwcwy0d\build\meson-python-native-file.ini"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  The Meson build system"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Version: 1.2.1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Source dir: C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Build dir: C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390\.mesonpy-slwcwy0d\build"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Build type: native build"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Project name: pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Project version: 2.2.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  ..\..\meson.build:2:0: ERROR: Could not find C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  A full log can be found at C:\Users\jjstestal\AppData\Local\Temp\pip-install-21psq3l6\pandas_f7c2aa8f401840bb8827db091982c390\.mesonpy-slwcwy0d\build\meson-logs\meson-log.txt"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  [end of output]"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  note: This error originates from a subprocess, and is likely not a problem with pip."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="error: metadata-generation-failed"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Encountered error while generating package metadata."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="note: This is an issue with the package mentioned above, not pip."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="hint: See above for details."
+PS C:\TFM_Triage>
+(.venv) pip freeze > C:\TFM_Triage\reports\pip_freeze_fase5.txt
+PS C:\TFM_Triage>
+(.venv) python -m pip install --upgrade pip setuptools wheel
+
+PS C:\TFM_Triage>
+(.venv) pip install -r C:\TFM_Triage\requirements.txt > C:\TFM_Triage\reports\pip_install_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-evtx==0.8.1 (from -r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached python_evtx-0.8.1-py3-none-any.whl.metadata (6.0 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pandas==2.2.2 (from -r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached pandas-2.2.2.tar.gz (4.4 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing backend dependencies: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing backend dependencies: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): finished with status 'error'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  error: subprocess-exited-with-error"
+(.venv) EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml) did not run successfully."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  exit code: 1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  [12 lines of output]"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  + meson setup C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf\.mesonpy-kmo2qx4i\build -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --vsenv --native-file=C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf\.mesonpy-kmo2qx4i\build\meson-python-native-file.ini"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  The Meson build system"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Version: 1.2.1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Source dir: C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Build dir: C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf\.mesonpy-kmo2qx4i\build"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Build type: native build"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Project name: pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Project version: 2.2.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  ..\..\meson.build:2:0: ERROR: Could not find C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  A full log can be found at C:\Users\jjstestal\AppData\Local\Temp\pip-install-4pgzp_19\pandas_dfdcfe74a5f84977bcfa621f40dccadf\.mesonpy-kmo2qx4i\build\meson-logs\meson-log.txt"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  [end of output]"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  note: This error originates from a subprocess, and is likely not a problem with pip."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="error: metadata-generation-failed"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Encountered error while generating package metadata."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="System.Management.Automation.RemoteException"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="note: This is an issue with the package mentioned above, not pip."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="hint: See above for details."
+PS C:\TFM_Triage>
+(.venv) pip install -r C:\TFM_Triage\requirements.txt 
+
+PS C:\TFM_Triage>
+(.venv) python --version
+
+PS C:\TFM_Triage>
+(.venv) pip install -r C:\TFM_Triage\requirements.txt > C:\TFM_Triage\reports\pip_install_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-evtx==0.8.1 (from -r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached python_evtx-0.8.1-py3-none-any.whl.metadata (6.0 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pandas==2.3.3 (from -r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading pandas-2.3.3-cp314-cp314-win_amd64.whl.metadata (19 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting hexdump>=3.3 (from python-evtx==0.8.1->-r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading hexdump-3.3.zip (12 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Installing build dependencies: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Getting requirements to build wheel: finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Preparing metadata (pyproject.toml): finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting numpy>=1.26.0 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached numpy-2.5.0-cp314-cp314-win_amd64.whl.metadata (6.6 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-dateutil>=2.8.2 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pytz>=2020.1 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting tzdata>=2022.7 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading python_evtx-0.8.1-py3-none-any.whl (26 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading pandas-2.3.3-cp314-cp314-win_amd64.whl (11.1 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="   ---------------------------------------- 11.1/11.1 MB 10.3 MB/s  0:00:01"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached numpy-2.5.0-cp314-cp314-win_amd64.whl (12.6 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading pytz-2026.2-py2.py3-none-any.whl (510 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Building wheels for collected packages: hexdump"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Building wheel for hexdump (pyproject.toml): started"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Building wheel for hexdump (pyproject.toml): finished with status 'done'"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Created wheel for hexdump: filename=hexdump-3.3-py3-none-any.whl size=9008 sha256=b65b97aba284a875f1a102a1db3709f31756ad3223895214c43a20d14c59e393"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Stored in directory: c:\users\jjstestal\appdata\local\pip\cache\wheels\91\7e\b1\84d340ff406a8581267443afc1a0bedaed04b6f55f67460cd8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Successfully built hexdump"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Installing collected packages: pytz, hexdump, tzdata, six, python-evtx, numpy, python-dateutil, pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Successfully installed hexdump-3.3 numpy-2.5.0 pandas-2.3.3 python-dateutil-2.9.0.post0 python-evtx-0.8.1 pytz-2026.2 six-1.17.0 tzdata-2026.2"
+PS C:\TFM_Triage>
+(.venv) deactivate
+PS C:\TFM_Triage> Remove-Item C:\TFM_Triage\.venv -Recurse -Force -ErrorAction SilentlyContinue
+PS C:\TFM_Triage> cd C:\TFM_Triage
+PS C:\TFM_Triage> python -m venv .venv
+
+PS C:\TFM_Triage> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+PS C:\TFM_Triage> C:\TFM_Triage\.venv\Scripts\Activate.ps1
+PS C:\TFM_Triage>
+(.venv) python --version
+
+PS C:\TFM_Triage>
+(.venv) pip --version
+
+PS C:\TFM_Triage>
+(.venv) python -m pip install --upgrade pip setuptools wheel > C:\TFM_Triage\reports\pip_upgrade_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Requirement already satisfied: pip in .\.venv\Lib\site-packages (26.1.2)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting setuptools"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached setuptools-82.0.1-py3-none-any.whl.metadata (6.5 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting wheel"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting packaging>=24.0 (from wheel)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached setuptools-82.0.1-py3-none-any.whl (1.0 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached wheel-0.47.0-py3-none-any.whl (32 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached packaging-26.2-py3-none-any.whl (100 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Installing collected packages: setuptools, packaging, wheel"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Successfully installed packaging-26.2 setuptools-82.0.1 wheel-0.47.0"
+PS C:\TFM_Triage>
+(.venv) pip install --only-binary=:all: -r C:\TFM_Triage\requirements.txt > C:\TFM_Triage\reports\pip_install_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-evtx==0.8.1 (from -r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached python_evtx-0.8.1-py3-none-any.whl.metadata (6.0 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pandas==2.3.3 (from -r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached pandas-2.3.3-cp314-cp314-win_amd64.whl.metadata (19 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="INFO: pip is looking at multiple versions of python-evtx to determine which version is compatible with other requirements. This could take a while."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="ERROR: Could not find a version that satisfies the requirement hexdump>=3.3 (from python-evtx) (from versions: none)"
+(.venv) EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="ERROR: No matching distribution found for hexdump>=3.3"
+PS C:\TFM_Triage>
+(.venv) pip freeze > C:\TFM_Triage\reports\pip_freeze_fase5.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="packaging==26.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="setuptools==82.0.1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="wheel==0.47.0"
+PS C:\TFM_Triage>
+(.venv) pip install -r C:\TFM_Triage\requirements.txt > C:\TFM_Triage\reports\pip_install_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-evtx==0.8.1 (from -r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached python_evtx-0.8.1-py3-none-any.whl.metadata (6.0 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pandas==2.3.3 (from -r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached pandas-2.3.3-cp314-cp314-win_amd64.whl.metadata (19 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting hexdump>=3.3 (from python-evtx==0.8.1->-r C:\TFM_Triage\requirements.txt (line 1))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached hexdump-3.3-py3-none-any.whl"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting numpy>=1.26.0 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached numpy-2.5.0-cp314-cp314-win_amd64.whl.metadata (6.6 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting python-dateutil>=2.8.2 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting pytz>=2020.1 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting tzdata>=2022.7 (from pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas==2.3.3->-r C:\TFM_Triage\requirements.txt (line 2))"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached python_evtx-0.8.1-py3-none-any.whl (26 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached pandas-2.3.3-cp314-cp314-win_amd64.whl (11.1 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached numpy-2.5.0-cp314-cp314-win_amd64.whl (12.6 MB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached pytz-2026.2-py2.py3-none-any.whl (510 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Using cached tzdata-2026.2-py2.py3-none-any.whl (349 kB)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Installing collected packages: pytz, hexdump, tzdata, six, python-evtx, numpy, python-dateutil, pandas"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Successfully installed hexdump-3.3 numpy-2.5.0 pandas-2.3.3 python-dateutil-2.9.0.post0 python-evtx-0.8.1 pytz-2026.2 six-1.17.0 tzdata-2026.2"
+PS C:\TFM_Triage>
+(.venv) pip freeze > C:\TFM_Triage\reports\pip_freeze_fase5.txt
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="hexdump==3.3"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="numpy==2.5.0"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="packaging==26.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="pandas==2.3.3"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="python-dateutil==2.9.0.post0"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="python-evtx==0.8.1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="pytz==2026.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="setuptools==82.0.1"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="six==1.17.0"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="tzdata==2026.2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="wheel==0.47.0"
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase3_sysmon_normal.evtx `
+  --output C:\TFM_Triage\processed\fase3\events_fase3_sysmon.csv `
+  --phase fase3_normal
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase4_sysmon_sospechosa.evtx `
+  --output C:\TFM_Triage\processed\fase4\events_fase4_sysmon.csv `
+  --phase fase4_suspicious_simulated
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase3_powershell_normal.evtx `
+  --output C:\TFM_Triage\processed\fase3\events_fase3_powershell.csv `
+  --phase fase3_normal
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase4_powershell_sospechosa.evtx `
+  --output C:\TFM_Triage\processed\fase4\events_fase4_powershell.csv `
+  --phase fase4_suspicious_simulated
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase4_security_sospechosa.evtx `
+  --output C:\TFM_Triage\processed\fase4\events_fase4_security.csv `
+  --phase fase4_suspicious_simulated
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\evtx_to_csv.py `
+  --input C:\TFM_Triage\raw\fase4_system_sospechosa.evtx `
+  --output C:\TFM_Triage\processed\fase4\events_fase4_system.csv `
+  --phase fase4_suspicious_simulated
+
+PS C:\TFM_Triage>
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\build_labeled_dataset.py `
+  --output C:\TFM_Triage\processed\combined\events_labeled.csv `
+  --summary C:\TFM_Triage\processed\combined\dataset_summary.json
+
+PS C:\TFM_Triage>
+(.venv) Remove-Item C:\TFM_Triage\processed\combined\events_labeled.csv -Force -ErrorAction SilentlyContinue
+PS C:\TFM_Triage>
+(.venv) Remove-Item C:\TFM_Triage\processed\combined\dataset_summary.json -Force -ErrorAction SilentlyContinue
+PS C:\TFM_Triage>
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\build_labeled_dataset.py `
+  --output C:\TFM_Triage\processed\combined\events_labeled.csv `
+  --summary C:\TFM_Triage\processed\combined\dataset_summary.json
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\build_labeled_dataset.py `
+  --output C:\TFM_Triage\processed\combined\events_labeled.csv `
+  --summary C:\TFM_Triage\processed\combined\dataset_summary.json
+
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\build_labeled_dataset.py `
+  --output C:\TFM_Triage\processed\combined\events_labeled.csv `
+  --summary C:\TFM_Triage\processed\combined\dataset_summary.json `
+  > C:\TFM_Triage\reports\dataset_summary_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="{"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "total_events": 1605,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "events_by_phase": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase4_suspicious_simulated": 978,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase3_normal": 627"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  },"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "events_by_provider": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "Microsoft-Windows-Sysmon": 905,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "Microsoft-Windows-PowerShell": 700"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  },"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "events_by_event_id": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "4104": 671,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "11": 294,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "3": 230,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "1": 141,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "5": 138,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "22": 79,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "7": 15,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "40961": 7,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "53504": 7,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "40962": 7,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "12": 6,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "4103": 4,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "4100": 4,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "13": 2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  },"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "events_by_label": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "background": 919,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "normal": 627,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "suspicious_simulated": 59"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  },"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "events_by_scenario": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "": 847,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "N5": 250,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S7": 236,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S2": 125,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "N4": 35,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "N3": 28,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "N1": 22,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S3": 21,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S5": 18,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "N2": 7,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S4": 7,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S1": 6,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "S6": 3"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  },"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  "source_files": {"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase4_sysmon_sospechosa.evtx": 750,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase3_powershell_normal.evtx": 472,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase4_powershell_sospechosa.evtx": 228,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    "fase3_sysmon_normal.evtx": 155"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  }"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="}"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="OK: dataset generado en C:\TFM_Triage\processed\combined\events_labeled.csv"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="OK: resumen generado en C:\TFM_Triage\processed\combined\dataset_summary.json"
+PS C:\TFM_Triage>
+(.venv) Test-Path C:\TFM_Triage\processed\combined\events_labeled.csv
+True
+PS C:\TFM_Triage>
+(.venv) Test-Path C:\TFM_Triage\processed\combined\dataset_summary.json
+True
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\quick_dataset_check.py > C:\TFM_Triage\reports\quick_dataset_check_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Traceback (most recent call last):"
+(.venv) EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\src\quick_dataset_check.py", line 4, in <module>"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    df = pd.read_csv(path, dtype=str, encoding="utf-8-sig").fillna("")"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    return _read(filepath_or_buffer, kwds)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    parser = TextFileReader(filepath_or_buffer, **kwds)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    self._engine = self._make_engine(f, self.engine)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    self.handles = get_handle("
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                   ~~~~~~~~~~^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        f,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ...<6 lines>..."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        storage_options=self.options.get("storage_options", None),"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    )"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    handle = open("
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        handle,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ...<3 lines>..."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        newline="","
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    )"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\FM_Triage\\\\processed\\\\combined\\\\events_labeled.csv'"
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\quick_dataset_check.py > C:\TFM_Triage\reports\quick_dataset_check_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Traceback (most recent call last):"
+(.venv) EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\src\quick_dataset_check.py", line 4, in <module>"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    df = pd.read_csv(path, dtype=str, encoding="utf-8-sig").fillna("")"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    return _read(filepath_or_buffer, kwds)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    parser = TextFileReader(filepath_or_buffer, **kwds)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    self._engine = self._make_engine(f, self.engine)"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    self.handles = get_handle("
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                   ~~~~~~~~~~^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        f,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ...<6 lines>..."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        storage_options=self.options.get("storage_options", None),"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    )"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ^"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="  File "C:\TFM_Triage\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    handle = open("
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        handle,"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    ...<3 lines>..."
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="        newline="","
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="    )"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\FM_Triage\\processed\\combined\\events_labeled.csv'"
+PS C:\TFM_Triage>
+(.venv) Test-Path C:\TFM_Triage\processed\combined\events_labeled.csv
+True
+PS C:\TFM_Triage>
+(.venv) python C:\TFM_Triage\src\quick_dataset_check.py > C:\TFM_Triage\reports\quick_dataset_check_fase5.txt 2>&1
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Total eventos: 1605"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eventos por fase:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="phase"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="fase4_suspicious_simulated    978"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="fase3_normal                  627"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Name: count, dtype: int64"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eventos por etiqueta:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="label"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="background              919"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="normal                  627"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="suspicious_simulated     59"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Name: count, dtype: int64"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eventos por escenario:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="scenario_id"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="      847"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="N5    250"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S7    236"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S2    125"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="N4     35"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="N3     28"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="N1     22"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S3     21"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S5     18"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="N2      7"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S4      7"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S1      6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="S6      3"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Name: count, dtype: int64"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eventos Sysmon ID:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="event_id"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="11    294"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="3     230"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="1     141"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="5     138"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="22     79"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="7      15"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="12      6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="13      2"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Name: count, dtype: int64"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Top procesos Image:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Image"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                                                                                                                             700"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\svchost.exe                                                                                              148"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files (x86)\Microsoft\EdgeWebView\Application\149.0.4022.98\msedgewebview2.exe                                    109"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\Mozilla Firefox\firefox.exe                                                                                  96"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                     77"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\taskhostw.exe                                                                                             47"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\WindowsApps\Microsoft.WidgetsPlatformRuntime_1.6.15.0_x64__8wekyb3d8bbwe\WidgetService\WidgetService.exe     34"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\Sysmon64.exe                                                                                                       31"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe                                                                     25"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\PickerHost.exe                                                                                            20"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\WINDOWS\Explorer.EXE                                                                                                       18"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\wbem\WmiPrvSE.exe                                                                                         15"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\ImmersiveControlPanel\SystemSettings.exe                                                                           13"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Users\jjstestal\AppData\Local\Microsoft\OneDrive\26.106.0603.0003\OneDriveLauncher.exe                                     12"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe                                                     12"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\reg.exe                                                                                                   10"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\WindowsApps\microsoft.windowsnotepad_11.2510.14.0_x64__8wekyb3d8bbwe\Notepad\Notepad.exe                      9"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\Sublime Text\sublime_text.exe                                                                                 9"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\schtasks.exe                                                                                               8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\WindowsApps\Microsoft.ScreenSketch_11.2510.31.0_x64__8wekyb3d8bbwe\SnippingTool\SnippingTool.exe              8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\SearchFilterHost.exe                                                                                       8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\cmd.exe                                                                                                    8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\sc.exe                                                                                                     8"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\sppsvc.exe                                                                                                 7"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\UUS\amd64\MoUsoCoreWorker.exe                                                                                       7"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MpDefenderCoreService.exe                                   7"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\WINDOWS\system32\reg.exe                                                                                                    6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\WINDOWS\system32\MpSigStub.exe                                                                                              6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Program Files\WindowsApps\MicrosoftWindows.Client.WebExperience_526.1202.40.0_x64__cw5n1h2txyewy\WidgetBoard.exe            6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="C:\Windows\System32\conhost.exe                                                                                                6"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Name: count, dtype: int64"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor=""
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="Eventos sospechosos simulados:"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="                   local_time event_id                                                         Image                                                                                                                                                                                                                                                                                                                                                                                                     CommandLine                                                                                            TargetObject QueryName scenario_id                label"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:32:34.013+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S1 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:32:34.078+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S1 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:32:34.142+02:00        1 C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe                                                                                                                                                                                                                                                                                                                                                "C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe"                                                                                                                             S1 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:32:34.158+02:00        5 C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S1 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:32:34.161+02:00        7 C:\Users\JJSTES~1\AppData\Local\Temp\TFMTest\svchost-test.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S1 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:26.536+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:26.561+02:00        1     C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAFQARgBNACAARgBhAHMAZQAgADQAIABwAHIAdQBlAGIAYQAgAGIAZQBuAGkAZwBuAGEAIABlAG4AYwBvAGQAZQBkACAAYwBvAG0AbQBhAG4AZAAiACAAfAAgAE8AdQB0AC0ARgBpAGwAZQAgAEMAOgBcAFQARgBNAF8AVAByAGkAYQBnAGUAXAByAGUAcABvAHIAdABzAFwAZgBhAHMAZQA0AF8AUwAyAF8AZQBuAGMAbwBkAGUAZABfAG8AdQB0AHAAdQB0AC4AdAB4AHQA                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:26.623+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:26.624+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:27.220+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:27.274+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:27.277+02:00        5     C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:28.688+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S2 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:42.269+02:00        1                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                 "C:\WINDOWS\system32\reg.exe" add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d C:\Windows\System32\notepad.exe /f                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:42.275+02:00       12                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                         HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:42.275+02:00       13                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                 HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:42.276+02:00        5                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:44.512+02:00        1                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                           "C:\WINDOWS\system32\reg.exe" delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:44.516+02:00       12                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                 HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:44.517+02:00        5                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:33:46.389+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.547+02:00        1                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                 "C:\WINDOWS\system32\reg.exe" add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /t REG_SZ /d C:\Windows\System32\notepad.exe /f                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.550+02:00       12                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                         HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.550+02:00       13                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                 HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.551+02:00        5                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.573+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.579+02:00        1                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                          "C:\WINDOWS\system32\reg.exe" query HKCU\Software\Microsoft\Windows\CurrentVersion\Run                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:16.584+02:00        5                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:18.600+02:00        1                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                           "C:\WINDOWS\system32\reg.exe" delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v TFMTest /f                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:18.603+02:00       12                                   C:\WINDOWS\system32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                 HKU\S-1-5-21-116498436-4260922757-2981525732-1001\Software\Microsoft\Windows\CurrentVersion\Run\TFMTest                    S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:18.604+02:00        5                                   C:\Windows\System32\reg.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:35:21.413+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S3 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:14.176+02:00        1                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                "C:\WINDOWS\system32\schtasks.exe" /Create /TN TFMTestTask /TR notepad.exe /SC ONCE /ST 23:59 /F                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:14.201+02:00        5                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:14.218+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:14.222+02:00        1                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                                           "C:\WINDOWS\system32\schtasks.exe" /Query /TN TFMTestTask /V /FO LIST                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:14.236+02:00        5                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:16.274+02:00        1                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                                                   "C:\WINDOWS\system32\schtasks.exe" /Delete /TN TFMTestTask /F                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:38:16.284+02:00        5                              C:\Windows\System32\schtasks.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S4 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:53.388+02:00        1                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                  "C:\WINDOWS\system32\sc.exe" create TFMTestService binPath= "C:\Windows\System32\cmd.exe /c echo TFMTestService" start= demand                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:53.397+02:00        5                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:53.413+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:53.415+02:00        1                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                                                                                               "C:\WINDOWS\system32\sc.exe" query TFMTestService                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:53.419+02:00        5                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:55.452+02:00        1                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                                                                                              "C:\WINDOWS\system32\sc.exe" delete TFMTestService                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:55.457+02:00        5                                    C:\Windows\System32\sc.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:39:57.061+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S5 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:41:35.449+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S6 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:41:35.473+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S6 suspicious_simulated"
+>> EnlaceDeParámetros(Out-File): nombre="InputObject"; valor="2026-07-01 09:41:40.181+02:00       11     C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            S6 suspicious_simulated"
+PS C:\TFM_Triage>
+(.venv) Get-FileHash C:\TFM_Triage\src\*.py -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_scripts.txt
+PS C:\TFM_Triage>
+(.venv) Get-FileHash C:\TFM_Triage\processed\combined\*.csv -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_processed_csv.txt
+PS C:\TFM_Triage>
+(.venv) Get-FileHash C:\TFM_Triage\processed\combined\*.json -Algorithm SHA256 |
+Out-File C:\TFM_Triage\hashes\hashes_fase5_processed_json.txt
+PS C:\TFM_Triage>
+(.venv) Get-ChildItem C:\TFM_Triage -Recurse |
+Select-Object FullName, Length, LastWriteTime |
+Out-File C:\TFM_Triage\reports\listado_archivos_fase5.txt
+PS C:\TFM_Triage>
+(.venv) Stop-Transcript
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260701120015
+**********************

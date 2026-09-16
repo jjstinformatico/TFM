@@ -1,0 +1,44 @@
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>SHA256,IMPHASH</HashAlgorithms>
+  <CheckRevocation>False</CheckRevocation>
+  <EventFiltering>
+    <!-- Event ID 1: Process Create -->
+    <!-- Se registra la creacion de procesos para reconstruir actividad y relaciones padre-hijo. -->
+    <ProcessCreate onmatch="exclude" />
+
+    <!-- Event ID 3: Network Connection -->
+    <!-- Se registran conexiones de red para detectar procesos con comunicacion externa. -->
+    <NetworkConnect onmatch="exclude" />
+
+    <!-- Event ID 5: Process Terminate -->
+    <!-- Se registra la finalizacion de procesos para acotar ventanas temporales. -->
+    <ProcessTerminate onmatch="exclude" />
+
+    <!-- Event ID 11: File Create -->
+    <!-- Se registran creaciones de archivos en rutas relevantes para el laboratorio. -->
+    <FileCreate onmatch="include">
+      <TargetFilename condition="begin with">C:\TFM_Triage\</TargetFilename>
+      <TargetFilename condition="contains">\Temp\</TargetFilename>
+      <TargetFilename condition="contains">\AppData\</TargetFilename>
+      <TargetFilename condition="contains">\Downloads\</TargetFilename>
+    </FileCreate>
+
+    <!-- Event ID 12, 13, 14: Registry Events -->
+    <!-- Se registran cambios en claves Run utilizadas para simular persistencia benigna. -->
+    <RegistryEvent onmatch="include">
+      <TargetObject condition="contains">\Software\Microsoft\Windows\CurrentVersion\Run</TargetObject>
+    </RegistryEvent>
+
+    <!-- Event ID 22: DNS Query -->
+    <!-- Se registran consultas DNS para complementar conexiones de red. -->
+    <DnsQuery onmatch="exclude" />
+
+    <!-- Event ID 7: Image Load -->
+    <!-- Se restringe a cargas desde rutas temporales para evitar ruido excesivo. -->
+    <ImageLoad onmatch="include">
+      <ImageLoaded condition="contains">\Temp\</ImageLoaded>
+      <ImageLoaded condition="contains">\AppData\</ImageLoaded>
+      <ImageLoaded condition="contains">\Downloads\</ImageLoaded>
+    </ImageLoad>
+  </EventFiltering>
+</Sysmon>
